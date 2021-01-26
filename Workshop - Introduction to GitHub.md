@@ -72,22 +72,13 @@ git config user.email "Lee.Hachadoorian@gmail.com"
 
 In the remainder of this workshop you will create a project branch, fix an error in a file, push it to the remote, and create a pull request.
 
+## Creating Branches
 
-# Git Warnings
+A **branch** is a group of changes. Branches are created so that work in progress can be kept separate from the main branch, usually in order to add a new feature or bug fix.
 
-Git should not be used for sensitve data, such as passwords or API keys. If, for example, you are developing an application that uses a cloud service such as AWS or Azure, you should not include your credentials in the code committed to a repository. *Since Git preserves the history of all files committed to a repo, you cannot just delete the sensitive data!* You will have to rewrite the repo history to purge the file. Information on how to do this is available at <https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository>.
+A branch needs a name. It is usually a good idea to give descriptive names, such as a short name for the feature being added or bug being fixed. A big project will often a branch named `dev` (or something similar), which is the current development version. Feature branches may be branched off of `dev`, and once all milestone features are merged into `dev`, `dev` will be merged into `master`.
 
-Git is not ideal for working with large files. This is particularly important to keep in mind for GIS data, which can often be quite large. Git maintains all versions of a file, so if your data is regularly changing, the size of you repo will inflate rapidly. Additionally, you may not need Git's versioning tools for your data. If you do, you might consider using Git Large File Storage (<https://docs.github.com/en/github/managing-large-files/versioning-large-files>). But, really, probably consider using a database such as PostGIS.
-
-Since Git preserves all file history, if you once had a large data file in your repo, all new collaborators will get that file when they clone or fork your repo! You will probably want to purge the file from the repo history, using the same procedures as above for removing files with sensitive data from the repo history.
-
-***************************************************
-
-# Git Sample Workflow
-
-
-
-You will make your changes (adding, editing, or deleting files) in a **branch**. Begin by creating a branch using your name.
+To begin, I will make a branch named `scratch`. I will add a file. You will branch off of `scratch`.
 
 ```
 # Create branch
@@ -100,33 +91,46 @@ git branch
 git checkout <branch-name>
 ```
 
-The example repo includes a Python script **names.py**. Open up **names.py** and add the line `print("Your name")`.
+It is also possible to check out an existing branch.
+
+## Working with Files
+
+You can add, edit, or delete files in a branch by adding, editing, or deleting them on your had drive. You can check the status of current file with:
+
+```
+git status
+```
+
+New files must be added to GitHub for tracking. This can be done with a specific filename, but usually you want to add all new files:
 
 
 ```
-# What's the current state of the repo?
-git status
+# Add a specific file for tracking
+git add <filename>
 
-# Add file to git for tracking:
+# Add all new files for tracking
 git add .
-
-# Or git add a specific file:
-git add names.py
 ```
 
 Now commit your changes. Commits *require* a message. Message is given in quotes after -m flag.
 
-> TIP: It is a best practice to start commit messages with a present tense verb.
-
 ```
-git commit -m "Add my print statement"
+git commit -m "Adding new files"
 ```
 
-Push changes to centralized repo. `origin` is a label for the remote repo. The name is arbitrary, but `origin` is conventional, and was created by default when you cloned the repo. `<branch-name>` is the name of the branch to push to on the remote, and should match the branch that you have checked out. In this case, you have been asked to create a branch with your name.
+## Pushing and Pulling Changes
+
+We have made the changes locally, but now we want them to appear in the **remote** so that we can share them with our project collaborators. `origin` is a label for the remote repo. The name is arbitrary, but `origin` is conventional, and was created by default when you cloned the repo. `<branch-name>` is the name of the branch to push to the remote, and should match the branch that you have checked out.
 
 
 ```
-git push origin <branch-name>
+git push origin scratch
+```
+
+Now that I have created this branch, you can **pull** the branch to your local repo:
+
+```
+git pull origin scratch
 ```
 
 Once pushed, you can go to GitHub and you will see the new branch. In order to merge this branch, you will create a pull request (PR). When you create a PR, the **base** branch is the one you want to merge your work into (usually `master`). The **compare** branch is the one with the new work.
@@ -139,4 +143,15 @@ When the remote has been updated, you will need to pull the changes to your loca
 git checkout master
 git pull origin master
 ```
+
+# Git Warnings
+
+Git should not be used for sensitve data, such as passwords or API keys. If, for example, you are developing an application that uses a cloud service such as AWS or Azure, you should not include your credentials in the code committed to a repository. *Since Git preserves the history of all files committed to a repo, you cannot just delete the sensitive data!* You will have to rewrite the repo history to purge the file. Information on how to do this is available at <https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository>.
+
+Git is not ideal for working with large files. This is particularly important to keep in mind for GIS data, which can often be quite large. Git maintains all versions of a file, so if your data is regularly changing, the size of you repo will inflate rapidly. Additionally, you may not need Git's versioning tools for your data. If you do, you might consider using Git Large File Storage (<https://docs.github.com/en/github/managing-large-files/versioning-large-files>). But, really, probably consider using a database such as PostGIS.
+
+Since Git preserves all file history, if you once had a large data file in your repo, all new collaborators will get that file when they clone or fork your repo! You will probably want to purge the file from the repo history, using the same procedures as above for removing files with sensitive data from the repo history.
+
+
+
 
