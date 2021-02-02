@@ -95,13 +95,13 @@ It is also possible to check out an existing branch.
 
 ## Working with Files
 
-You can add, edit, or delete files in a branch by adding, editing, or deleting them on your had drive. You can check the status of current file with:
+You can add, edit, or delete files in a branch by adding, editing, or deleting them on your hard drive. You can check the status of current file with:
 
 ```
 git status
 ```
 
-New files must be added to GitHub for tracking. This can be done with a specific filename, but usually you want to add all new files:
+Files must be added to Git for tracking. This can be done with a specific filename, but usually you want to add all new files:
 
 
 ```
@@ -112,7 +112,9 @@ git add <filename>
 git add .
 ```
 
-Now commit your changes. Commits *require* a message. Message is given in quotes after -m flag.
+If you do `git status`, you will see that Git recognizes that these files differ from the versions in the repository. Putting the changed versions into the repository is called a **commit**. A commit should come when work has reached a good stopping point. It could mean that a new feature has been completed, or a bug has been fixed. The work may still need to be tested or reviewed, but that comes later. The work is committed to the repository first, and that makes it available to other developers for review.
+
+Now commit your changes. Commits *require* a message. The message is given in quotes after the `-m` flag.
 
 ```
 git commit -m "Adding new files"
@@ -127,22 +129,35 @@ We have made the changes locally, but now we want them to appear in the **remote
 git push origin scratch
 ```
 
-Now that I have created this branch, you can **pull** the branch to your local repo:
+Now that I have created this branch, you can download the changes. There are two ways to do this: **fetch** and **pull**. A **pull** attempts to merge the files/data with your local repo. It should usually not be done with uncommitted changes in your files. If your purpose is to bring down only new branches without merging, this can be accomplished with a **fetch**. Fetching is non-destructive. It is perfect for getting a new branch that does not exist locally. It will also bring down new files in an existing branch. If your local branch has changed, it will merge if there are no merge conflicts, otherwise it will fail.
+
+Fetch the new branch with
 
 ```
-git pull origin scratch
+git fetch origin
 ```
 
-Once pushed, you can go to GitHub and you will see the new branch. In order to merge this branch, you will create a pull request (PR). When you create a PR, the **base** branch is the one you want to merge your work into (usually `master`). The **compare** branch is the one with the new work.
+Note that the branch name is not specified. If there are multiple new branches, they will all be downloaded.
+
+## Practice
+
+In demoing the above, I will have created a new file, edited, and added it to the `scratch` branch. The file will have intentional errors, which you will fix. Now you should try these steps:
+
+1. Checkout the `scratch` branch.
+2. Create and checkout a new branch with your name or initials. This branches off of `scratch`, so it will include the new file, which was created in `scratch`. If instead you branch off of `master`, your new branch will *not* contain the new file.
+3. Open the new file in a text editor. Fix the errors. Save and close the file.
+4. Add and commit the changes.
+5. Push the new branch to the remote.
+
+## Creating a Pull Request
+
+Once pushed, you can go to GitHub and you will see the new branch. In order to merge this branch, you will create a pull request (PR). When you create a PR, the **base** branch is the one you want to merge your work into (often `master`). The **compare** branch is the one with the new work.
 
 When creating a PR, you may change the message so that it makes sense within the broader project (i.e., don't have to keep the commit message), and you should add a detailed comment. Do not merge your own PRs! PRs should be reviewed by at one other developer on your team.
 
-When the remote has been updated, you will need to pull the changes to your local repo. You usually only want to pull changes that have been committed to `master`. On your local, you first need to check out master, then pull changes.
+For this exercise, assign another student as the reviewer. Then work with that student to review and merge the pull request.
 
-```
-git checkout master
-git pull origin master
-```
+**Additional instruction forthcoming.**
 
 # Git Warnings
 
