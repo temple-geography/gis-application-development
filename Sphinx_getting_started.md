@@ -7,9 +7,9 @@ It generates documentation based on docstrings that you write within each class 
 
 ## Installs:
 
-`conda install -c conda-forge sphinx`
+`conda install sphinx`
 
-`conda install -c conda-forge sphinx_rtd_theme` 
+`conda install sphinx_rtd_theme` 
 
 
 ## Writing Docstrings inside your code
