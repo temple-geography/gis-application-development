@@ -7,9 +7,13 @@ A class is a template for creating objects with closely related data (attributes
 
 In the geospatial context, a class could represent a spatial layer or a geographic feature. Since this is a GIS course, we will construct a basic class that could be used to store spatial data, specifically, a polygon.
 
+The following examples make use of the file [shapes_naive.py](shapes_naive.py]. You should download this now and open it in your preferred Python IDE.
+
 # Creating a Class
 
 ## An Empty Class
+
+**First attempt (not shown in script)**
 
 A simple, if not very interesting class, can be created with no attributes and no methods. All block level code in Python requires content, and the `pass` statement can be used as a placeholder to stub out a block to be defined later. By convention, class names use `CamelCase`. Type the following code into a script and run it:
 
@@ -28,13 +32,15 @@ poly.area = 1.0
 poly.perimeter = 4.0
 ```
 
-We have given a list of coordinate tuples that define the boundary of a unit square as the `coords` attribute. This square has a perimeter of $4.0$ (four sides of length 1 each) and area of $1.0$. The attributes can be accessed using dot notation:
+We have given a list of coordinate tuples that define the boundary of a unit square as the `coords` attribute. This square has a perimeter of 4.0 (four sides of length 1 each) and area of 1.0. The attributes can be accessed using dot notation:
 
 ```python
 print("Area =", poly.area)
 ```
 
 ## A Class with Required Attributes
+
+**Second attempt**
 
 Even though we have named our class `Polygon`, all it is so far is a bucket into which we can dump any attributes we want. We assigned sensible attributes, but shouldn't we make sure that any instance of the class has boundary coordinates, an area, and a perimeter length?
 
@@ -54,7 +60,7 @@ class Polygon:
 
 The first parameter, `self`, is the name that the current instance of the class calls itself, regardless of the identifier assigned by the calling namespace. That is, your name might be "Lee", but you think of yourself as "me". A class could be instantiated with the name `object1`, but it still needs an internal shorthand to refer to itself. By convention, Python coders always name this parameter `self`. *The `self` parameter is always omitted when calling methods of the class (including `__init__`).*
 
-The next three parameters are the values for attributes that we want an instance of the class to always have. 
+The next three parameters are the values for attributes that we want an instance of the class to always have. These three parameters must be inlcuded when the polygon is instantiated. (This function call uses positional parameters rather than keyword parameters: the order is *coords*, *area*, *perimeter*.)
 
 ```python
 poly = Polygon([(0, 0), (1, 0), (1, 1), (0, 1), (0, 0)], 1.0, 4.0)
@@ -67,6 +73,8 @@ poly = Polygon()
 ```
 
 ## A Class with Derived Attributes
+
+**Third attempt with derived attributes**
 
 It may occur to you that if you have the coordinates that define the boundary of a polygon, you should be able to calculate the area and the perimeter. But the class we just created requires the user to pass in the area and perimeter. This is poorly designed for two reasons:
 
@@ -86,6 +94,8 @@ Create a polygon instance by passing in a list of coordinate tuples. Then read t
 > We have been working with a simple polygon, that is, a polygon with no holes, but this way of calculating area is useful for creating polygons with holes. In that case, you would need to specify the coordinates of the exterior ring and one or more interior rings (holes). The coordinates of the exterior ring are given counterclockwise, yielding a positive area. The coordinates of the interior rings are given clockwise, yielding a negative area. The area of the polygon is then the sum of these areas: the area bounded by the exterior ring plus the *negative* areas of the holes. Creating a polygon with holes is left as an exercise. An additional exercise would be to check the coordinates passed in and determine whether they follow the right-hand rule, reversing the order if they don't.
 
 ## A Class with Private Attributes
+
+**Fourth attempt with private attributes**
 
 Our previous attempt is an improvement. When we enter the coordinates, the perimeter and area are calculated automatically. But what happens if you run this code:
 
@@ -176,9 +186,9 @@ Now, using the template for the `attribute1` template given above, create `@prop
 
 In some sense methods are similar to procedures or functions. In Python, methods are in fact defined as functions in the class definition. But they are not just any procedure, they are procedures that represent an object's *behaviors* in the same way that its properties or attributes represent the object's *data*. The behaviors should be conceptually related to the object.
 
-The **state** of an object is the values associated with all of the object's properties. Methods often change the state of an object, either the object itself or another object that it is interacting with. For example, a video game might have an object named `tinder` that is an instance of the `Dragon` class, and an object named `sir_gawain` that is an instance of the `Knight` class. Both objects might have a `health` property. The dragon might have a `bite` method that takes another object as a parameter. If the `sir_gawain` object is passed as a parameter, its `health` is reduced--that is, its state is changed. The dragon might also have a `heal` method, that changes its own state by increasing its `health`.
+The **state** of an object is the values associated with all of the object's properties. Methods often change the state of an object, either the object itself or another object that it is interacting with. For example, a video game might have an object named `tinder` that is an instance of the `Dragon` class, and an object named `sir_gawain` that is an instance of the `Knight` class. Both objects might have a `health` property. The dragon might have a `bite` method that takes another object as a parameter. If the `sir_gawain` object is passed as a parameter, its `health` is reduced—that is, its state is changed. The dragon might also have a `heal` method, that changes its own state by increasing its `health`.
 
-Polygons can be translated (shifted) in space, so one possible method would be a `translate` method. The polygon is moved by changing *all* coordinates by the same amount in the x and y axis. The rest of the class can stay the same. All we need to do is read all of the individual coordinates, add a fixed amount to the x coordinates and a (likely different) fixed amount to the y coordinates, then reassign the coordinates of the object. Derived attributes will be automatically updated when we change the coordinates.
+Polygons can be translated (shifted) in space, so a `translate` method might be useful for a polygon object. The polygon is moved by changing *all* coordinates by the same amount in the x and y axis. All we need to do is read all of the individual coordinates, add a fixed amount to the x coordinates and a (likely different) fixed amount to the y coordinates, then reassign the coordinates of the object. Derived attributes will be automatically updated when we change the coordinates.
 
 The code of our previous polygon class can stay the same. All we need to do is add the following function (method) to the class definition:
 
@@ -194,6 +204,8 @@ The code of our previous polygon class can stay the same. All we need to do is a
 Run the class definition code and create an instance of the class. Then run the `translate` function, passing in `delta_x` and/or `delta_y`. (Note that the parameters have a default value of 0, so if you only pass `delta_x`, the polygon will be translated along the x-axis but not the y-axis.
 
 A slightly more complex version of the `translate` function might take a vector (magnitude and direction) and use trigonometry to calculate `delta_x` and `delta_y`.
+
+Note that the line `self.coords = c` will trigger the recalculation of the perimeter and area, but the perimeter and area don't actually change. (Moving the polygon doesn't change its area.) You might be tempted to come up with a way to change the coordinates *without* recalculating the perimeter and area, and it *is* possible (see next section). However, there could be other derived attributes, such as the coordinates of the polygon's centroid, which would change when the coordinates change. Usually you will want to recalculate all derived attributes. If you try to save CPU cycles by recalculating some derived attributes (e.g. the centroid) and not others (e.g. perimeter, area), you will have to be very, very careful about how you set up that class.
 
 ## When to Calculate Derived Attributes
 
