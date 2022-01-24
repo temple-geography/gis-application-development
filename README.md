@@ -10,10 +10,10 @@ This course makes use of [*Practices of the Python Pro*](https://www.manning.com
     * *PotPP* Ch 1 - The bigger picture
 * Week 2 - Version Control
     * *PotPP* Ch 2 - Separation of concerns
-    * [Workshop: Introduction to Git and GitHub](Workshop - Introduction to GitHub.md)
+    * [Workshop: Introduction to Git and GitHub](introduction_to_git/introduction_to_git.md)
 * Week 3 - Classes and Object-Oriented Programming
     * *PotPP* Ch 3 - Abstraction and Encapsulation
-    * Workshop: Creating Classes in Python
+    * [Workshop: Creating Classes in Python](classes_and_oop/creating_classes_in_python.md)
 * Week 4 - Time Complexity
     * *PotPP* Ch 4 - Designing for high performance
     * [Workshop: Timing and CPU Profiling](time_complexity.md)
