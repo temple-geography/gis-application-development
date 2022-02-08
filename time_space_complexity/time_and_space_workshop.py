@@ -112,9 +112,19 @@ def bubbleSort(arr):
 setup_code1='''
 from __main__ import bubbleSort
 '''
+
 test_code1='''
 arr = [64, 34, 25, 12, 22, 11, 90, 74]
 '''
+
+setup_code1 = "pass"
+test_code1='''
+arr = [64, 34, 25, 12, 22, 11, 90, 74]
+bubbleSort(arr)
+'''
+
+test_code1 = 
+
 setup_code2='''
 from __main__ import bubbleSort
 import random
@@ -123,8 +133,8 @@ test_code2='''
 rand_arr= random.sample(range(1000), 100)
 '''
 
-print(timeit.timeit(stmt= test_code1, setup= setup_code, number=50))
-print(timeit.repeat(stmt= test_code2, setup= setup_code, number= 1000000, repeat= 5))  
+print(timeit.timeit(stmt= test_code1, setup= setup_code1, number=50))
+print(timeit.repeat(stmt= test_code2, setup= setup_code2, number= 1000000, repeat= 5))  
     
 #%%Bubble sort-- optimized form
 
@@ -318,6 +328,7 @@ arr = [8, 7, 2, 1, 0, 9, 6]
 n=len(arr)
 low= 0
 high= n-1
+quickSort(arr, low, high)
 '''
 setup_code2='''
 from __main__ import quickSort
