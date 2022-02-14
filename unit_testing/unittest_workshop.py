@@ -54,8 +54,8 @@ rectangle_perim(-5, 3)
     
 def rectangle_perim(length, width):
 
-   if type(length) == int or type(length) == float \
-   and type(width) == int or type(width) == float:
+   if (isinstance(length, int) or isinstance(length, float)) \
+   and (isinstance(width, int) or isintance(width, float)):
         perimeter = abs(2*length) + abs(2*width)
         return perimeter
    else:
@@ -66,6 +66,8 @@ def rectangle_perim(length, width):
     
 rectangle_perim('5', '3')
 rectangle_perim(-5, 3)
+rectangle_perim(4.5, 2)
+
 
 # Great. Our function is now better prepared to handle more types of user input.
 
