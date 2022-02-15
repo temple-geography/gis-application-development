@@ -55,7 +55,7 @@ from numpy import arange
 Nelements = 10000
 Ntimeits = 10000
     
-x = arange(Nelements)
+x = arange(Nelements)  #comparing numpy vs. built-in python range function
 y = range(Nelements)
     
 t_numpy = Timer("x.sum()","from __main__ import x")
