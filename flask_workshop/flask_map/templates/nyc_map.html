@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>NYC Race Dot Density</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+<!-- <style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style> -->
+<style>
+body {
+      margin: 0;
+      padding: 0;
+    }
+		h2,
+	 h3 {
+		 margin: 10px;
+		 font-size: 1.2em;
+	 }
+	 h3 {
+		 font-size: 1em;
+	 }
+	 p {
+		 font-size: 0.85em;
+		 margin: 10px;
+		 text-align: left;
+	 }
+.map-overlay {
+	 position: absolute;
+	 bottom: 0;
+	 left: 0;
+	 background: rgba(255, 255, 255, 0.5);
+	 margin-left: 20px;
+	 font-family: Arial, sans-serif;
+	 overflow: auto;
+	 border-radius: 3px;
+ }
+ #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+ #features {
+      top: 0;
+      height: 120px;
+      margin-top: 20px;
+      width: 300px;
+    }
+#legend {
+      padding: 10px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      line-height: 18px;
+      height: 80px;
+      margin-bottom: 40px;
+      width: 80px;
+    }
+    .legend-key {
+      display: inline-block;
+      border-radius: 20%;
+      width: 10px;
+      height: 10px;
+      margin-right: 5px;
+    }
+<style>
+</head>
+<body>
+<style>
+		.mapboxgl-popup {
+			background: rgba(255, 255, 255, 0.5);
+				max-width: 400px;
+					font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+				}
+</style>
+
+<div id="map"></div>
+<div class="map-overlay" id="features">
+	 <h2>NYC Racial Distribution<br>
+	 According to the 2020 Census</h2>
+	 <div id="pd"><p> <b>One dot = 100 people</p></div>
+		 	<div id="pd"><p> <b>Total Population: 8,804,190</p></div>
+
+ </div>
+<div class="map-overlay" id="legend"></div>
+
+<script>
+
+	mapboxgl.accessToken = 'pk.eyJ1IjoiY2FzZXlzbWl0aC1wZ2giLCJhIjoiY2trZDlrcGR2MDE3YjJucXRybTQwZzVldCJ9.LGxGnGLJkn8aT8ifnUpFHQ';
+const map = new mapboxgl.Map({
+container: 'map',
+zoom: 10,
+center: [-74.0060, 40.7128],
+pitch: 40,
+bearing: 0,
+style: 'mapbox://styles/caseysmith-pgh/ckwpr5mjr02iz14s76awp03x2'
+});
+
+var clickedStateId = null;
+
+	map.on('load', function() {
+	// Add a source for the state polygons.
+	map.addSource('nyc_tracts_pct', {
+	'type': 'geojson',
+	'data': 'nyc_tracts_pct.geojson'
+	});
+
+	// Add a layer showing the state polygons.
+	map.addLayer({
+	'id': 'tracts_fills',
+	'type': 'fill',
+	'source': 'nyc_tracts_pct',
+	'paint': {
+			'fill-color': 'rgba(0, 0, 0, 0.4)',
+			'fill-opacity': [
+							'case',
+							['boolean', ['feature-state', 'hover'], false],
+							0,
+							0.5
+							],
+			'fill-outline-color': [
+                'case',
+                ['boolean', ['feature-state', 'click'], false],
+                '#ff0000',
+                '#000000'
+            ]
+	}
+	});
+
+	// When a click event occurs on a feature in the states layer,
+	// open a popup at the location of the click, with description
+	// HTML from the click event's properties.
+	map.on('click', 'tracts_fills', (e) => {
+	new mapboxgl.Popup()
+	.setLngLat(e.lngLat)
+	.setHTML(
+		"<b>" + e.features[0].properties.NTAName + ", " + e.features[0].properties.BoroName + "</b><br>" +
+		"Tract ID: (" + e.features[0].properties.GEOID + ")" +"</b><br><br>" +
+		"Total Population: " + e.features[0].properties.P1_001N + "<br>" +
+		 "White Population: " + e.features[0].properties.P2_005N + " (" + e.features[0].properties.pct_white + "%)<br>" +
+		 "Black Population: " + e.features[0].properties.P1_004N + " (" + e.features[0].properties.pct_black + "%)<br>" +
+		 "Asian Population: " + e.features[0].properties.P1_006N + " (" + ((e.features[0].properties.P1_006N/e.features[0].properties.P1_001N)*100).toFixed(2) + "%)<br>" +
+		 "Biracial: " + e.features[0].properties.P1_009N + " (" + e.features[0].properties.pct_biraci + "%)<br>" +
+		 "Other: " + e.features[0].properties.P1_008N + " (" + e.features[0].properties.pct_other + "%)<br>"
+	 )
+	.addTo(map);
+	});
+
+	// add legend to your map
+	var layers = ['Black', 'White', 'Asian', 'Other'];
+	var colors = ['#08d3f7', '#f58fd6', '#5cf58a', '#fae100'];
+	for (i = 0; i < layers.length; i++) {
+	      var layer = layers[i];
+	      var color = colors[i];
+	      var item = document.createElement('div');
+	      var key = document.createElement('span');
+	      key.className = 'legend-key';
+	      key.style.backgroundColor = color;
+	var value = document.createElement('span');
+	      value.innerHTML = layer;
+	      item.appendChild(key);
+	      item.appendChild(value);
+	      legend.appendChild(item);
+	    }
+
+			map.on('load', function() {
+			      map.getCanvas().style.cursor = 'default';
+			      map.fitBounds([
+							[-74.232720, 41.082886],
+							[-73.578581, 40.486181]
+			        ]);
+
+			        // change info window on hover
+			        map.on('mousemove', function(e) {
+			          var tracts = map.queryRenderedFeatures(e.point, {
+			            layers: ['nyc-tracts-pct'] // get from the mapbox top left layer information
+			          });
+
+			          if (states.length > 0) {
+			            document.getElementById('pd').innerHTML =
+			              '<h3><strong> building id:' +
+			              // states[0].properties.fid +
+			              '</strong></h3><p><strong><em>' +
+			              tracts[0].properties.P1_001N;
+			          } else {
+			            document.getElementById('pd').innerHTML =
+			              '<p>The building id is: </p>';
+			          }
+			        });
+			    });
+
+});
+</script>
+
+</body>
+</html>
