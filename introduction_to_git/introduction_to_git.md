@@ -41,7 +41,13 @@ All work in Git is in a **repository**, or "repo". There are two ways to get sta
 * If you have an *existing project*, you will need to initialize a *local* Git repo for the project, then add the local repo to GitHub.
 * If you are starting a new project, it will be easier to create a new repo in GitHub, then **clone** it locally. This is also the procedure for beginning to contribute to an existing project that someone else is already maintaining in GitHub.
 
-We will focus on working in a project that is new or already on GitHub. If you have an existing local project, you can initialize it by navigating to the project folder in the terminal and giving the following command:
+### Adding an Existing Project to Git
+
+**For class, we will not perform these steps, as we will focus on working in a project that is new or already on GitHub. Instructions are provided for your reference.**
+
+Additionally, even for a brand new project, it is usually easier to create a new, empty repo in GitHub first and clone it locally. Therefore, the instructions in this section are only really useful if you started work on a project locally and decided later to add it to GitHub.
+
+If you have an existing local project, you can initialize it by navigating to the project folder in the terminal and giving the following command:
 
 ```
 git init
@@ -49,11 +55,21 @@ git init
 
 Then follow instructions at <https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line> to add the project to GitHub.
 
-Optionally, you can specify the name of the main branch using the `-b` switch. GitHub (the organization) seems to be moving toward a convention of using `main` as the name of the main branch, and the instructions above use `git init -b main` to initialize a project using this convention. The Git default if no name is specified is `master`, and this still seems to be the convention on the vast majority of projects on GitHub.
+Optionally, you can specify the name of the main branch using the `-b` switch. GitHub (the organization) is moving toward a convention of using `main` as the name of the main branch, and the instructions above use `git init -b main` to initialize a project using this convention. The Git default if no name is specified is `master`, and this seems (as of April 2022) to be the convention on the vast majority of projects on GitHub.
 
-You do not need to specify any info about the project, such as a project name. The project name will be taken from the name of the folder that you run the `git init` command in. Do make sure that this folder name does not have any spaces in it. GitHub project names use a variety of different naming conventions, but it seems to me that the most common convention is all lower case with hyphens as word separators, e.g. `my-awesome-project`.
+You do not need to specify any info about the project, such as a project name. The project name will be taken from the name of the folder that you run the `git init` command in. **Do make sure that this folder name does not have any spaces in it.** GitHub project names use a variety of different naming conventions, but it seems to me that the most common convention is all lower case with hyphens as word separators, e.g. `my-awesome-project`.
 
-For this workshop, you will clone the `gis-application-development` repo used for this course. If, instead, you were beginning a completely new project, you would first create the new repo *in GitHub*. Information on creating a new repository is available at <https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository>. Do create a README for your project. If you know what programming language your project will be using, it is a really good idea to create a *.gitignore*. GitHub will create one that will ignore file types and folders commonly used for that programming language. It is also a good idea to choose a license. See <https://choosealicense.com/> for more information.
+### Cloning a Repo
+
+For this workshop, you will clone the `temple-geography/git-practice` repo. If, instead, you were beginning a completely new project, you would first create the new repo *in GitHub*. Information on creating a new repository is available at <https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository>.
+
+For a new project:
+
+* **DO** create a README for your project.
+* If you know what programming language your project will be using, it is a really good idea to create a *.gitignore*. Select your programming language and GitHub will create a *.gitignore* that will ignore file types and folders commonly used for that programming language.
+* It is also a good idea to choose a license. See <https://choosealicense.com/> for more information.
+
+Since our practice project already exists, we will ignore these steps.
 
 To clone the repo, navigate in the terminal to the *parent* folder. The repo will be copied locally to a subfolder. The parent folder could be a folder where you keep all of your work for this course, but not all of your coursework will be in the repo, and later you will create another repo for the term project. Then run `git clone` with GitHub URL of the repo:
 
@@ -67,7 +83,7 @@ Set a user name and email for the repo. The email must be the address associated
 
 ```
 git config user.name "Lee Hachadoorian"
-git config user.email "Lee.Hachadoorian@gmail.com"
+git config user.email "Lee.Hachadoorian@temple.edu"
 ```
 
 In the remainder of this workshop you will create a project branch, fix an error in a file, push it to the remote, and create a pull request.
@@ -79,6 +95,8 @@ A **branch** is a group of changes. Branches are created so that work in progres
 A branch needs a name. It is usually a good idea to give descriptive names, such as a short name for the feature being added or bug being fixed. A big project will often a branch named `dev` (or something similar), which is the current development version. Feature branches may be branched off of `dev`, and once all milestone features are merged into `dev`, `dev` will be merged into `master`.
 
 To begin, I will make a branch named `scratch`. I will add a file. You will branch off of `scratch`.
+
+I will demo the following steps. Do not do these steps at this time.
 
 ```
 # Create branch
