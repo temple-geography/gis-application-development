@@ -7,7 +7,7 @@ A class is a template for creating objects with closely related data (attributes
 
 In the geospatial context, a class could represent a spatial layer or a geographic feature. Since this is a GIS course, we will construct a basic class that could be used to store spatial data, specifically, a polygon.
 
-The following examples make use of the file [shapes_naive.py](shapes_naive.py]. You should download this now and open it in your preferred Python IDE.
+The following examples make use of the file [shapes_naive.py](shapes_naive.py). You should download this now and open it in your preferred Python IDE.
 
 # Creating a Class
 
@@ -35,7 +35,7 @@ poly.perimeter = 4.0
 We have given a list of coordinate tuples that define the boundary of a unit square as the `coords` attribute. This square has a perimeter of 4.0 (four sides of length 1 each) and area of 1.0. The attributes can be accessed using dot notation:
 
 ```python
-print("Area =", poly.area)
+print(f"Area = {poly.area}")
 ```
 
 ## A Class with Required Attributes
@@ -58,9 +58,9 @@ class Polygon:
         self.perimeter = perimeter
 ```
 
-The first parameter, `self`, is the name that the current instance of the class calls itself, regardless of the identifier assigned by the calling namespace. That is, your name might be "Lee", but you think of yourself as "me". A class could be instantiated with the name `object1`, but it still needs an internal shorthand to refer to itself. By convention, Python coders always name this parameter `self`. *The `self` parameter is always omitted when calling methods of the class (including `__init__`).*
+The first parameter, `self`, is the name that the current instance of the class calls itself. It uses this name to refer to itself *regardless of the identifier assigned by the calling namespace*. That is, your name might be "Lee", but you think of yourself as "I" or "me". Someone else might say "Lee goes to the store" but you would say "I go to the store". A class could be instantiated with the name `object1`, but it still needs an internal shorthand to refer to itself. By convention, Python coders always name this parameter `self`. *The `self` parameter is always omitted when calling methods of the class (including `__init__`).*
 
-The next three parameters are the values for attributes that we want an instance of the class to always have. These three parameters must be inlcuded when the polygon is instantiated. (This function call uses positional parameters rather than keyword parameters: the order is *coords*, *area*, *perimeter*.)
+The next three parameters are the values for attributes that we want an instance of this class to always have. These three parameters must be included when the polygon is instantiated. (This function call uses positional parameters rather than keyword parameters: the order is *coords*, *area*, *perimeter*.)
 
 ```python
 poly = Polygon([(0, 0), (1, 0), (1, 1), (0, 1), (0, 0)], 1.0, 4.0)
@@ -106,9 +106,9 @@ poly.area = "Thor"
 
 The perimeter is no longer derived from the coordinates, and the area is not even the right data type! What we need is a way to control or block the ability to change attributes. We do this by creating **private attributes**, and adding a method to the class that allows us to retrieve or change this attribute. The private attribute is given a name beginning with an underscore, which is not accessed directly. For example, if you have instantiated a `Polygon` object with the name `poly`, you would still refer to `poly.perimeter` in your code. Internally, however, the object has a private attribute `_perimeter`. What we need is a way to pass values between `perimeter` and `_perimeter`.
 
-Note that many programming languages use the concept of **getter** and **setter** functions to work with private attributes. Although you may see examples online of doing this in Python, it is considered un-Pythonic. To get the area of `poly`, you would have to access it with something like `poly.get_area()`, rather than the clear and concise `poly.area`.
+> Note that many programming languages use the concept of **getter** and **setter** functions to work with private attributes. Although you may see examples online of doing this in Python, it is considered un-Pythonic. To get the area of `poly`, you would have to access it with something like `poly.get_area()`, rather than the clear and concise `poly.area`.
 
-Python allows us to work with private attributes using the `@property` decorator. To set and get values for a generic attribute `attribute1`, you use the `@property` decorator to get the attribute, and the `@<attribute_name>.setter` decorator to set the attribute. A code template for using this decorator is as follows:
+Python allows us to work with private attributes using the `@property` **decorator**. To set and get values for a generic attribute `attribute1`, you use the `@property` decorator to get the attribute, and the `@<attribute_name>.setter` decorator to set the attribute. A code template for using this decorator is as follows:
 
 ```python
     @property
@@ -156,7 +156,7 @@ The *isoperimetric quotient* is a measure of shape compactness given by:
 
 Using private attributes and the `@property` decorator, add `ipq` as a read-only attribute to the `Polygon` class.
 
-If you create the attribute correctly, `poly.ipq` should return $0.785...$.
+If you create the attribute correctly, `poly.ipq` should return `0.785...`.
 
 <!-- * Calculating derived attributes when retrieved vs. when "master" attribute is set.-->
 
@@ -205,13 +205,13 @@ Run the class definition code and create an instance of the class. Then run the 
 
 A slightly more complex version of the `translate` function might take a vector (magnitude and direction) and use trigonometry to calculate `delta_x` and `delta_y`.
 
-Note that the line `self.coords = c` will trigger the recalculation of the perimeter and area, but the perimeter and area don't actually change. (Moving the polygon doesn't change its area.) You might be tempted to come up with a way to change the coordinates *without* recalculating the perimeter and area, and it *is* possible (see next section). However, there could be other derived attributes, such as the coordinates of the polygon's centroid, which would change when the coordinates change. Usually you will want to recalculate all derived attributes. If you try to save CPU cycles by recalculating some derived attributes (e.g. the centroid) and not others (e.g. perimeter, area), you will have to be very, very careful about how you set up that class.
+Note that the line `self.coords = c` will trigger the recalculation of the perimeter and area, even though moving the polygon won't actually change its perimeter and area. You might be tempted to come up with a way to change the coordinates *without* recalculating the perimeter and area, and it *is* possible (see next section). However, there could be other derived attributes, such as the coordinates of the polygon's centroid, which would change when the coordinates change. Usually you will want to recalculate all derived attributes. If you try to save CPU cycles by recalculating some derived attributes (e.g. the centroid) and not others (e.g. perimeter, area), you will have to be very, very careful about how you set up that class.
 
 ## When to Calculate Derived Attributes
 
 Derived attributes might be calculated when the object is created, or when the attribute is read, that is, when `object1.attribute1` is evaluated. That is, another way to create the polygon class would be to put the logic for calculating the perimeter in the `perimeter` function. Deciding when to do so depends on how much startup time is required to instantiate the object and how often the attributes are accessed. If the object has many properties that are expensive to calculate, but rarely accessed, it makes sense to defer calculation until the value is needed.
 
-Even in this case, you want to calculate the value only once. To do so, you would create the private attribute with no value (Python `None`). Then, when the property was accessed, you would check value of the private attribute. If its value was `None`, you would calculate the value and store it in the private attribute. But if the private attribute had a value other than `None`, you would return the existing value.
+Even in this case, you want to calculate the value only once. To do so, you would create the private attribute with no value (Python `None`). Then, when the property was accessed, you would check the value of the private attribute. If its value was `None`, you would calculate the value and store it in the private attribute. But if the private attribute had a value other than `None`, you would return the existing value.
 
 Here is an example of doing so for the `perimeter` attribute. The corresponding calculation would be *removed* from the coords setter. Further, `self._perimeter` would have to be set (or reset) to `None` in the coords setter.
 
@@ -237,7 +237,7 @@ Here is an example of doing so for the `perimeter` attribute. The corresponding 
 
 A bounding box is a rectangle that completely encloses a polygon. The bounding box can be constructed knowing only the minimum and maximum *x* and *y* coordinates in the polygon. The minima and maxima can easily be extracted by using `min` and `max` on a list of the *x* coordinates and, separately, on a list of the *y* coordinates.
 
-Once we know the minimums and maximums of the *x* and *y* coordinates, we can use the `Polygon` class to create the bounding box. But if we do that in the `__init__` method, we will immediately encounter an infinite regress! When we instantiate the Polygon class to create the bounding box, we would also construct the bounding box of the bounding box, then the bounding box of the bounding box of the bounding box, etc.
+Once we know the minima and maxima of the *x* and *y* coordinates, we can use the `Polygon` class to create the bounding box. But if we do that in the `__init__` method, we will immediately encounter an infinite regress! When we instantiate the Polygon class to create the bounding box, we would also construct the bounding box of the bounding box, then the bounding box of the bounding box of the bounding box, etc.
 
 The solution is to add a read-only `bbox` property, and construct the bounding box only when the property is accessed. But use the example above to store the bounding box so that it is only created once, and not recreated each time the property is accessed.
 

@@ -61,20 +61,20 @@ You do not need to specify any info about the project, such as a project name. T
 
 For this workshop, you will clone the `temple-geography/git-practice` repo. If you were beginning a completely new project, you would first create the new repo *in GitHub*. Information on creating a new repository is available at <https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-new-repository>.
 
-For a new project:
+> For a new project:
+> 
+> * **DO** create a README for your project.
+> * **DO** create a *.gitignore*. GitHub offers several *.gitignore* templates based specific programming languages. If you know what programming language your project will be using, the selected *.gitignore* will ignore file types and folders commonly used for that programming language.
+> * It is also a good idea to choose a license. See <https://choosealicense.com/> for more information.
+> 
+> Our practice project already exists on GitHub, so you can ignore these steps.
 
-* **DO** create a README for your project.
-* **DO** create a *.gitignore*, if you know what programming language your project will be using. Select your programming language and GitHub will create a *.gitignore* that will ignore file types and folders commonly used for that programming language.
-* It is also a good idea to choose a license. See <https://choosealicense.com/> for more information.
-
-I have already created a practice project already exists, so you can ignore these steps.
-
-To clone the repo, navigate in the terminal to the *parent* folder on your computer. The repo will be copied locally to a subfolder. The parent folder could be a folder where you keep all of your work for this course. Not all of your coursework will be in the repo. Additionally, you can have more than one repo in the same parent folder. Later you will create another repo for the term project.
+To clone the repo, navigate in the terminal to the *parent* folder on your computer. The repo will be copied locally to a *subfolder*. The parent folder could be a folder where you keep all of your work for this course. The repo will be in the course folder, but not all of your coursework will be in the repo subfolder. Additionally, you can have more than one repo in the same parent folder. Later you will create another repo for the term project.
 
 Run `git clone` with GitHub URL of the repo:
 
 ```
-git clone https://github.com/temple-geography/gis-application-development
+git clone https://github.com/temple-geography/git-practice
 ```
 
 `cd` into the new subfolder and view the local files with `ls` (Mac/Linix or Windows PowerShell) or `dir` (Windows Command Prompt). You can also view the new folder and its contents in a file browser. Note that the README has been copied to your local repo.
@@ -126,7 +126,7 @@ Files must be added to Git for tracking. This can be done with a specific filena
 # Add a specific file for tracking
 git add <filename>
 
-# Add all new files for tracking
+# Add all new or changed files for tracking
 git add .
 
 # Check status again
@@ -135,7 +135,7 @@ git status
 
 `git status` will show that Git recognizes that these files differ from the versions in the repository.
 
-Putting the changed versions into the repository is called a **commit**. A commit should come when work has reached a good stopping point. It could mean that a new feature has been completed, or a bug has been fixed. Even if the work is incomplete, it's usually a good idea to do a commit before signing off for the day. The work may still need to be tested or reviewed, but that comes later. 
+Putting the changed versions into the repository is called a **commit**. A commit should come when work has reached a good stopping point. It could mean that a new feature has been completed, or a bug has been fixed. Even if the feature is incomplete, it's usually a good idea to commit after significant changes that still leave the code in a working state. Committing work in progress (WIP) is OK, but not if you commit something that breaks the application. Doing a commit before signing off for the day is probably good. The work may still need to be tested or reviewed, but that comes later. 
 
 Commits *require* a message. The message is given in quotes after the `-m` flag.
 
@@ -155,7 +155,10 @@ git reset <filename>
 git reset
 ```
 
-> **Renaming or moving files:** If you rename or move a file on the hard drive, Git will treat this as a file being deleted and a new file being added. Use the command `git mv` so that Git will know that the moved or renamed file is the same file!
+This suggests another way to think about *when* to commit. Commits create **checkpoints**, a point in the development to which you might want to return. Again, you may not have completed a feature, but if you have made significant progress, the code is in a working state, and you might want to return to this point in the event further development introduces serious problems, commiting lets you revert your work to this checkpoint using `git reset`.
+
+
+> **Renaming or moving files:** If you rename or move a file on the hard drive, Git will treat this as a file being deleted and a new file being added. Use the command `git mv <old_filename> <new_filename>` so that Git will know that the moved or renamed file is the same file!
 
 ## Pushing and Pulling Changes
 
