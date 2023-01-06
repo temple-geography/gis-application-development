@@ -13,7 +13,7 @@ This course makes use of [*Practices of the Python Pro*](https://www.manning.com
     * :hammer_and_wrench: [Workshop: Introduction to Git and GitHub](introduction_to_git/introduction_to_git.md)
     * :rocket: Introduce project topics
 * Week 2 - Version Control
-    * *PotPP* Ch 2 - Separation of concerns
+    * :closed_book: *PotPP* Ch 2 - Separation of concerns
     * :closed_book: [Stories, epics, and initiatives](https://www.atlassian.com/agile/project-management/epics-stories-themes)
     * :closed_book: [Agile epics: definition, examples, and templates](https://www.atlassian.com/agile/project-management/epics)
     * :closed_book: [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
