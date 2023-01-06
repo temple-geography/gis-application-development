@@ -8,9 +8,18 @@ This course makes use of [*Practices of the Python Pro*](https://www.manning.com
 
 * Week 1 - Introduction
     * *PotPP* Ch 1 - The bigger picture
+    * [Agile vs. waterfall project management](https://www.atlassian.com/agile/project-management/project-management-intro)
+    * [Agile workflows](https://www.atlassian.com/agile/project-management/workflow)
+    * :hammer_and_wrench: [Workshop: Introduction to Git and GitHub](introduction_to_git/introduction_to_git.md)
+    * :rocket: Introduce project topics
 * Week 2 - Version Control
     * *PotPP* Ch 2 - Separation of concerns
-    * [Workshop: Introduction to Git and GitHub](introduction_to_git/introduction_to_git.md)
+    * [Stories, epics, and initiatives](https://www.atlassian.com/agile/project-management/epics-stories-themes)
+    * [Agile epics: definition, examples, and templates](https://www.atlassian.com/agile/project-management/epics)
+    * [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
+    * [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
+    * :hammer_and_wrench: Python Modules: Main Modules & Functions
+    * :rocket: Form project teams, begin creating epics and user stories
 * Week 3 - Classes and Object-Oriented Programming
     * *PotPP* Ch 3 - Abstraction and Encapsulation
     * [Workshop: Creating Classes in Python](classes_and_oop/creating_classes_in_python.md)
