@@ -7,40 +7,51 @@ This course makes use of [*Practices of the Python Pro*](https://www.manning.com
 ## Schedule
 
 * Week 1 - Introduction
-    * *PotPP* Ch 1 - The bigger picture
-    * [Agile vs. waterfall project management](https://www.atlassian.com/agile/project-management/project-management-intro)
-    * [Agile workflows](https://www.atlassian.com/agile/project-management/workflow)
+    * :closed_book: *PotPP* Ch 1 - The bigger picture
+    * :closed_book: [Agile vs. waterfall project management](https://www.atlassian.com/agile/project-management/project-management-intro)
+    * :closed_book: [Agile workflows](https://www.atlassian.com/agile/project-management/workflow)
     * :hammer_and_wrench: [Workshop: Introduction to Git and GitHub](introduction_to_git/introduction_to_git.md)
     * :rocket: Introduce project topics
 * Week 2 - Version Control
     * *PotPP* Ch 2 - Separation of concerns
-    * [Stories, epics, and initiatives](https://www.atlassian.com/agile/project-management/epics-stories-themes)
-    * [Agile epics: definition, examples, and templates](https://www.atlassian.com/agile/project-management/epics)
-    * [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
-    * [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
+    * :closed_book: [Stories, epics, and initiatives](https://www.atlassian.com/agile/project-management/epics-stories-themes)
+    * :closed_book: [Agile epics: definition, examples, and templates](https://www.atlassian.com/agile/project-management/epics)
+    * :closed_book: [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
+    * :closed_book: [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
     * :hammer_and_wrench: Python Modules: Main Modules & Functions
     * :rocket: Form project teams, begin creating epics and user stories
 * Week 3 - Classes and Object-Oriented Programming
-    * *PotPP* Ch 3 - Abstraction and Encapsulation
-    * [Workshop: Creating Classes in Python](classes_and_oop/creating_classes_in_python.md)
+    * :closed_book: *PotPP* Ch 3 - Abstraction and Encapsulation
+    * :hammer_and_wrench: [Workshop: Creating Classes in Python](classes_and_oop/creating_classes_in_python.md)
+    * :rocket: Sprint 0 - Create epics and user stories
 * Week 4 - Time Complexity
-    * *PotPP* Ch 4 - Designing for high performance
-    * [Workshop: Timing and CPU Profiling](time_complexity.md)
+    * :closed_book: *PotPP* Ch 4 - Designing for high performance
+    * :hammer_and_wrench: [Workshop: Timing and CPU Profiling](time_complexity.md)
+    * :rocket: Sprint 0 (cont.) - Finish epics and user stories, populate epic backlog
 * Week 5 - Database Access
-    * [Workshop: SQLAlchemy and Other Python Packages for Database Access](data_access.md)
+    * :hammer_and_wrench: [Workshop: SQLAlchemy and Other Python Packages for Database Access](data_access.md)
+    * :rocket: Sprint 1
 * Week 6 - Testing
-    * *PotPP* Ch 5 - Testing your Software
-    * Workshop: Python unittest
+    * :closed_book: *PotPP* Ch 5 - Testing your Software
+    * :hammer_and_wrench: Workshop: Python unittest
+    * :rocket: Sprint 1 (cont.)
 * Week 7 - GUI Design
-    * Workshop: PyQt and Qt Designer
+    * :hammer_and_wrench: Workshop: PyQt and Qt Designer
+    * :rocket: Sprint 2
 * Week 8 - Web Applications and Dashboards
-    * Workshop: Flask or Django
+    * :hammer_and_wrench: Workshop: Flask or Django
+    * :rocket: Sprint 2 (cont.)
 * Week 9 - Documentation
-    * Workshop: Using Sphinx for Python Documentation
+    * :hammer_and_wrench: Workshop: Using Sphinx for Python Documentation
+    * :rocket: Sprint 3
 * Week 10 - Distributing Software
-    * Workshop: Packaging/Freezing in Python
-* Weeks 11-14 - Term Project
-    * Ongoing class time devoted to completing the term project, including finalizing documentation and packaging, and ideally promotion via social media.
+    * :hammer_and_wrench: Workshop: Packaging/Freezing in Python
+    * :rocket: Sprint 3 (cont.)
+* Weeks 11-12 - Term Project
+    * :rocket: Sprint 4
+* Weeks 13-14 - Term Project
+    * :rocket: Freezing/Packaging & Documentation
+
 
 
 
