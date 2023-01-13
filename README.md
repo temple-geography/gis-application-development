@@ -30,10 +30,10 @@ This course makes use of [*Practices of the Python Pro*](https://www.manning.com
 * Week 4 - Time Complexity
     * Readings
         * :closed_book: *PotPP* Ch 4 - Designing for high performance
-    * :hammer_and_wrench: [Workshop: Timing and CPU Profiling](time_complexity.md)
+    * :hammer_and_wrench: [Workshop: Timing and CPU Profiling](time_space_complexity/time_complexity.md)
     * :rocket: Sprint 0 (cont.) - Finish epics and user stories, populate epic backlog
 * Week 5 - Database Access
-    * :hammer_and_wrench: [Workshop: SQLAlchemy and Other Python Packages for Database Access](data_access.md)
+    * :hammer_and_wrench: [Workshop: SQLAlchemy and Other Python Packages for Database Access](database_access/data_access.md)
     * :rocket: Sprint 1
 * Week 6 - Testing
     * Readings
