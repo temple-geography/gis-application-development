@@ -7,32 +7,37 @@ This course makes use of [*Practices of the Python Pro*](https://www.manning.com
 ## Schedule
 
 * Week 1 - Introduction
-    * :closed_book: *PotPP* Ch 1 - The bigger picture
-    * :closed_book: [Agile vs. waterfall project management](https://www.atlassian.com/agile/project-management/project-management-intro)
-    * :closed_book: [Agile workflows](https://www.atlassian.com/agile/project-management/workflow)
+    * Readings
+        * :closed_book: *PotPP* Ch 1 - The bigger picture
+        * :closed_book: [Agile vs. waterfall project management](https://www.atlassian.com/agile/project-management/project-management-intro)
+        * :closed_book: [Agile workflows](https://www.atlassian.com/agile/project-management/workflow)
     * :hammer_and_wrench: [Workshop: Introduction to Git and GitHub](introduction_to_git/introduction_to_git.md)
-    * :rocket: Introduce project topics
+    * :rocket: Introduce project topics, discuss student interests
 * Week 2 - Version Control
-    * :closed_book: *PotPP* Ch 2 - Separation of concerns
-    * :closed_book: [Stories, epics, and initiatives](https://www.atlassian.com/agile/project-management/epics-stories-themes)
-    * :closed_book: [Agile epics: definition, examples, and templates](https://www.atlassian.com/agile/project-management/epics)
-    * :closed_book: [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
-    * :closed_book: [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
-    * :hammer_and_wrench: Python Modules: Main Modules & Functions
-    * :rocket: Form project teams, begin creating epics and user stories
-* Week 3 - Classes and Object-Oriented Programming
-    * :closed_book: *PotPP* Ch 3 - Abstraction and Encapsulation
+    * Readings
+        * :closed_book: *PotPP* Ch 2 - Separation of concerns
+        * :closed_book: [Stories, epics, and initiatives](https://www.atlassian.com/agile/project-management/epics-stories-themes)
+        * :closed_book: [Agile epics: definition, examples, and templates](https://www.atlassian.com/agile/project-management/epics)
+        * :closed_book: [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
+        * :closed_book: [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
     * :hammer_and_wrench: [Workshop: Creating Classes in Python](classes_and_oop/creating_classes_in_python.md)
+    * :rocket: Finalize project teams, begin creating epics and user stories
+* Week 3 - Classes and Object-Oriented Programming
+    * Readings
+        * :closed_book: *PotPP* Ch 3 - Abstraction and Encapsulation
+    * :hammer_and_wrench: Workshop: Functions and Modules
     * :rocket: Sprint 0 - Create epics and user stories
 * Week 4 - Time Complexity
-    * :closed_book: *PotPP* Ch 4 - Designing for high performance
+    * Readings
+        * :closed_book: *PotPP* Ch 4 - Designing for high performance
     * :hammer_and_wrench: [Workshop: Timing and CPU Profiling](time_complexity.md)
     * :rocket: Sprint 0 (cont.) - Finish epics and user stories, populate epic backlog
 * Week 5 - Database Access
     * :hammer_and_wrench: [Workshop: SQLAlchemy and Other Python Packages for Database Access](data_access.md)
     * :rocket: Sprint 1
 * Week 6 - Testing
-    * :closed_book: *PotPP* Ch 5 - Testing your Software
+    * Readings
+        * :closed_book: *PotPP* Ch 5 - Testing your Software
     * :hammer_and_wrench: Workshop: Python unittest
     * :rocket: Sprint 1 (cont.)
 * Week 7 - GUI Design
