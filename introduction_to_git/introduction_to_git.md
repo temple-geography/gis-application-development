@@ -48,12 +48,12 @@ All work in Git is in a **repository**, or "repo". There are two ways to get sta
 To add your existing local project to Git, you **initialize** it by navigating to the project folder in the terminal and giving the following command:
 
 ```
-git init
+git init -b main
 ```
 
 Then follow instructions at <https://docs.github.com/en/github/importing-your-projects-to-github/adding-an-existing-project-to-github-using-the-command-line> to add the project to GitHub.
 
-Optionally, you can specify the name of the main branch using the `-b` switch. GitHub (the organization) is moving toward a convention of using `main` as the name of the main branch, and the instructions above use `git init -b main` to initialize a project using this convention. The Git default if no name is specified is `master`, and (as of April 2022) this still seems to be the convention on the vast majority of projects on GitHub.
+Optionally, you can specify the name of the main branch using the `-b` switch. GitHub (the organization) is moving toward a convention of using `main` as the name of the main branch, and the instructions above use `git init -b main` to initialize a project using this convention. The Git default if no name is specified is `master`, and (as of January 2023) this still is still pretty widespread among projects on GitHub.
 
 You do not need to specify any info about the project, such as a project name. The project name will be taken from the name of the folder that you run the `git init` command in. **Do make sure that this folder name does not have any spaces in it.** GitHub project names use a variety of different naming conventions, but it seems to me that the most common convention is all lower case with hyphens as word separators, e.g. `my-awesome-project`.
 
@@ -162,42 +162,91 @@ This suggests another way to think about *when* to commit. Commits create **chec
 
 ## Pushing and Pulling Changes
 
-The changes so far have been made to a local repository, but now I want them to appear in the **remote** so that they can be shared with project collaborators. `origin` is a label for the remote repo. The name is arbitrary, but `origin` is conventional, and was created by default when you cloned the repo. `<branch-name>` is the name of the branch to push to the remote, and should match the branch that you have checked out.
+The changes so far have been made to a local repository, but now I want them to appear in the **remote** so that they can be shared with project collaborators. `origin` is a label for the remote repo. The name is arbitrary, but `origin` is conventional, and was created by default when you cloned the repo. `<branch-name>` is the name of the branch to push to the remote.
 
 
 ```
 git push origin scratch
 ```
 
-Now that I have created this branch, you can download the changes. There are two ways to do this: **fetch** and **pull**. A **pull** attempts to merge the files/data with your local repo. It should usually not be done with uncommitted changes in your files. If your purpose is to bring down only new branches without merging, this can be accomplished with a **fetch**. Fetching is non-destructive. It is perfect for getting a new branch that does not exist locally. It will also bring down new files in an existing branch. If your local branch has changed, it will merge if there are no merge conflicts, otherwise it will fail.
+Usually, `<branch-name>` will match the branch that you have checked out. It is possible to `git push` a branch that is *not* the one you are working on. I find this somewhat confusing, but it may be useful if you have several feature branches that you are working on at once. You might be working on feature-3 and realize you committed changes to feature-2, but didn't push before checking out feature-3.
 
-Fetch the new branch with
+Now that I have created this branch, you can download the changes. First you need to **fetch** information about new branches on the remote:
 
 ```
 git fetch origin
 ```
 
-Note that the branch name is not specified. If there are multiple new branches, they will all be downloaded.
+Note that the branch name is not specified. If there are multiple new branches, you will get info about all of them.
+
+You can look at the status of local and remote branches (and see which remote branch each local branch **tracks**) with the `-vv` switch for "very verbose":
+
+```
+git status -vv
+```
+
+You should now see that there is a new **untracked** branch `scratch` on the remote. If you want to work with this branch locally, you need to check it out in a very specific way:
+
+```
+git checkout --track origin/scratch
+```
+
+This does three things:
+
+1. It makes a local copy of the remote branch `origin/scratch`.
+2. It sets up the local `scratch` branch to track `origin/scratch`.
+3. It checks out `scratch`.
+
+According to the [Git documentation](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches#_tracking_branches), you can accomplish the same thing with `git checkout scratch`. If `scratch` *only* exists on the remote, and there is no local `scratch` branch tracking it, it will do the same thing as `git checkout --track origin/scratch`. I might ask one of you to test this in class. I found it didn't work as advertised the last time I tried to teach this workshop, and am not sure where it went wrong. In any event, since `git checkout` can do different things depending on whether and where a branch exists, it might be better stick to the more verbose form.
 
 ## Practice
 
-In demoing the above, I will have created a new file, edited, and added it to the `scratch` branch. The file will have intentional errors, which you will fix. Now you should try these steps:
+In demoing the above, I will have created a new file, edited, and added it to the `scratch` branch. The file will have intentional errors, which you will fix. Try the following.
 
 1. Checkout the `scratch` branch.
-2. Create and checkout a new branch with your name or initials. This branches off of `scratch`, so it will include the new file, which was created in `scratch`. If instead you branch off of `master`, your new branch will *not* contain the new file.
-3. Open the new file in a text editor. Fix the errors. Save and close the file.
+2. Create and checkout a new branch with your names or initials, e.g. `feature-lee`. This branches off of `scratch`, so it will include the new file, which was created in `scratch`. If instead you branch off of `main`, your new branch will *not* contain the new file.
+3. Even though there are no changes, push this branch to the remote.
+3. Create and checkout *another* branch with a new name based on your earlier branch, e.g. `feature-lee2`.
+4. Open the new file in a text editor. Fix the errors. Save and close the file.
 4. Add and commit the changes.
 5. Push the new branch to the remote.
 
 ## Creating a Pull Request
 
-Once pushed, you can go to GitHub and you will see the new branch. In order to merge this branch, you will create a pull request (PR). When you create a PR, the **base** branch is the one you want to merge your work into (often `master`). The **compare** branch is the one with the new work.
+Once pushed, you can go to GitHub and you will see the new branch. In order to merge this branch, you will create a **pull request** (PR). When you create a PR, the **base** branch is the one you want to merge your work into (often `main`). The **compare** branch is the one with the new work.
 
 When creating a PR, you may change the message so that it makes sense within the broader project (i.e., don't have to keep the commit message), and you should add a detailed comment. Do not merge your own PRs! PRs should be reviewed by at one other developer on your team.
 
-For this exercise, assign another student as the reviewer. Then work with that student to review and merge the pull request.
+Pair up with another student and to practice working on pull requests. 
 
-**Additional instruction forthcoming.**
+1. Go to GitHub and create a pull request from your `feature-name2` branch to your `feature-name` branch. Assign the other student in your pair as the reviewer.
+2. Look at the repo's pull requests. If your partner did step 1 correctly, you should see that "You have a pending review request". Click on it to look at the pull request.
+3. Since these changes were made in branches that no one else was working in, you should see a message that "This branch has not conflicts with the base branch". Click the "Merge pull request" button.
+4. When the branch has been merged, you can close the pull request. You should also see a message that the merged branch can be deleted. Go ahead and delete the branch.
+5. When your partner has approved your PR, go back to the command line and run `git status -vv`. Note that you still have your `feature-name2` branch, but the remote branch is no longer there. You need to manually delete the local branch. Check out any other branch, then delete the unneeded feature branch with `git branch --delete feature-name2`.
+
+Merging can also be accomplished at the command line. You could merge your own feature branch by checking out the base branch (`feature-name`) and then using:
+
+```
+git merge feature-name2
+```
+
+This merges `feature-name2` into `feature-name`. It skips the PR review. Since we have to push to GitHub to use the PR features on the website, I find it easier to use GitHub's web-based merge than the command line merge. YMMV.
+
+## Resolving Merge Conflicts During PR Review
+
+Generally, only one developer should be working on a branch at a time. If both of you need to add features to `dev`,  you should branch off of `dev`, then seek to merge your branches into `dev`, rather than both edit the `dev` branch directly.
+
+Sometimes those changes may still conflict with each other. If you are working on `feature1` and your colleague is working on `feature2`, but those features are part of the same general area of concern, you may make incompatible changes in the same file. What happens if you do so?
+
+Continue working with the student you partnered with in the last step. For this example, I am going to assume we have two students named Legolas and Gimli. Assume that both of you are adding features to Legolas's branch, which is named `feature-legolas`.
+
+1. Gimli should pull and checkout `feature-legolas` with tracking, as demonstrated above.
+2. Gimli should branch off of `feature-legolas`. The branch can be named anything, e.g. `feature-legolas-gimli` or `feature-legolas-mod`. Make changes to the beginning of the file and at multiple places throughout. Remember, we are *trying* to create conflicts that can't be easily resolved.
+3. Legolas should make changes directly to `feature-legolas`. That is, don't what we normally should do, which is branch first. We are *trying* to create conflicts. Make changes to the beginning of the file and at multiple places throughout. Legoals should push their branch to GitHub.
+4. Gimli should now push their feature branch to GitHub. Then, create a PR trying to merge this branch into `feature-legolas`. Tag Legolas as the reviewer.
+5. Legolas should review the PR. GitHub will let you know there are merge conflicts. You can examine the conflicts using GitHub's web editor. It will show you the file with *both* contributors changes highlighted in various places. Legolas can edit the file directly here, choosing which changes to keep, or creating something completely new. When he is done, he can select "Mark as resolved", then confirm the pull request.
+6. Since changes have been made on the remote `feature-legolas` branch that are not reflected locally (unless Legolas just rejected all of Gimli's changes, in which case the post-merge remote branch will be the same as his local branch), both developers should pull the remote branch to their local repos.
 
 # Git Gotchas
 
