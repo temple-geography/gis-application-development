@@ -1,8 +1,16 @@
 # GIS Application Development
 
-Syllabus and workshops for a graduate course in application development focusing on GIS and geospatial applications.
+Schedule of workshops for a graduate course in application development focusing on GIS and geospatial applications.
 
 This course makes use of [*Practices of the Python Pro*](https://www.manning.com/books/practices-of-the-python-pro) by Dane Hillard (Manning Press).
+
+The easiest way to get all packages necessary for these workshops is to download to download the conda environment file <gus8066-environment.yml> and run the following command in the Anaconda Prompt:
+
+```sh
+conda env create -f gus8066-environment.yml
+```
+
+The environment file includes the Spyder IDE. If you prefer another IDE, you can comment out or delete that line before creating the environment. If you prefer working with Jupyter notebooks you can add `- jupyter` to the list of dependencies, or install it after environment creating with `conda install jupyter`.
 
 ## Schedule
 

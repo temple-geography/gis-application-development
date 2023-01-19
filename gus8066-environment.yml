@@ -1,0 +1,19 @@
+name: gus8066
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python
+  - spyder
+  - pyqtwebengine
+  - geopandas
+  - rasterio
+  - descartes
+  - matplotlib
+  - sqlalchemy
+  - psycopg2
+  - flask
+  - sphinx
+  - sphinx_rtd_theme
+  - pyinstaller
+prefix: /home/user/miniconda3/envs/gus8066
