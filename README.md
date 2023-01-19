@@ -4,7 +4,7 @@ Schedule of workshops for a graduate course in application development focusing 
 
 This course makes use of [*Practices of the Python Pro*](https://www.manning.com/books/practices-of-the-python-pro) by Dane Hillard (Manning Press).
 
-The easiest way to get all packages necessary for these workshops is to download to download the conda environment file <gus8066-environment.yml> and run the following command in the Anaconda Prompt:
+The easiest way to get all packages necessary for these workshops is to download to download the conda environment file [gus8066-environment.yml](gus8066-environment.yml) and run the following command in the Anaconda Prompt:
 
 ```sh
 conda env create -f gus8066-environment.yml
