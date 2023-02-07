@@ -75,11 +75,11 @@ Ntimeits = 10000
 x = arange(Nelements)
 y = range(Nelements)
     
-t_numpy = Timer(\"x.sum()\", \"from __main__ import x\")
-t_list = Timer(\"sum(y)\", \"from __main__ import y\")
+t_numpy = Timer("x.sum()", "from __main__ import x")
+t_list = Timer("sum(y)", "from __main__ import y")
    
-print(\"numpy: %.3e\" % (t_numpy.timeit(Ntimeits)/Ntimeits,))
-print(\"list:  %.3e\" % (t_list.timeit(Ntimeits)/Ntimeits,))
+print("numpy: %.3e" % (t_numpy.timeit(Ntimeits)/Ntimeits,))
+print("list:  %.3e" % (t_list.timeit(Ntimeits)/Ntimeits,))
   
 ### Timeit can also be executed via the command line using: python -m timeit \"Statement....\""
 ### Timeit works best on small snippets of code, for larger code you can use CPU profiling at the command line"
@@ -88,7 +88,7 @@ print(\"list:  %.3e\" % (t_list.timeit(Ntimeits)/Ntimeits,))
 # calls timeit() repeatedly and returns a list of results
 #syntax: repeat(repeat=5, number=1000000)
 
-print(timeit.repeat(stmt, setup, repeat))
+# print(timeit.repeat(stmt, setup, repeat))
 #%% Python program for implementation of Bubble Sort 
   
 def bubbleSort(arr):
@@ -115,26 +115,23 @@ from __main__ import bubbleSort
 
 test_code1='''
 arr = [64, 34, 25, 12, 22, 11, 90, 74]
-'''
-
-setup_code1 = "pass"
-test_code1='''
-arr = [64, 34, 25, 12, 22, 11, 90, 74]
 bubbleSort(arr)
 '''
-
-test_code1 = 
 
 setup_code2='''
 from __main__ import bubbleSort
 import random
 '''
 test_code2='''
-rand_arr= random.sample(range(1000), 100)
+rand_arr = random.sample(range(1000), 100)
+bubbleSort(rand_arr)
 '''
 
-print(timeit.timeit(stmt= test_code1, setup= setup_code1, number=50))
-print(timeit.repeat(stmt= test_code2, setup= setup_code2, number= 1000000, repeat= 5))  
+# Number defaults to 1,000,000
+print(timeit.timeit(stmt = test_code1, setup = setup_code1))
+
+# Sorting a list of 100 elements is slower. Reduce number to 1,000, repeat 5 times
+print(timeit.repeat(stmt = test_code2, setup = setup_code2, number = 1000, repeat= 5))  
     
 #%%Bubble sort-- optimized form
 
