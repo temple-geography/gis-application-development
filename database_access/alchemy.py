@@ -36,7 +36,7 @@ print(customer.columns.keys())
 
 #%%
 ### Select ###
-from sqlalchemy import select, 
+from sqlalchemy import select
 
 #bulid statement to query all records in customer table using the select() function.
 stmt = select([customer])
