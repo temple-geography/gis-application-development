@@ -49,7 +49,7 @@ The environment file includes the Spyder IDE. If you prefer another IDE, you can
     * :hammer_and_wrench: Workshop: Python unittest
     * :rocket: Sprint 1 (cont.)
 * Week 7 - GUI Design
-    * :hammer_and_wrench: Workshop: PyQt and Qt Designer
+    * :hammer_and_wrench: [Workshop: PyQt and Qt Designer](gui_design/gui_design_workshop_notes.md)
     * :rocket: Sprint 2
 * Week 8 - Web Applications and Dashboards
     * :hammer_and_wrench: Workshop: Flask or Django
