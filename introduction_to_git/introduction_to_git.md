@@ -258,7 +258,7 @@ Since Git preserves all file history, if you once had a large data file in your 
 
 # Other Notes
 
-You can work with a git repo on multiple computers using a file syncing service such as Dropbox. All the repo files will sync as normal, but the repo status and branches will sync as well. All of this info is stored internally in a hidden folder named `.git`, so as long as your syncing service doesn't exclude hidden files (which might be a user-configurable setting) all info about the repo will sync as well. There's no need to `git push` the repo from your desktop so that you can `git pull` on your laptop to work with it later.
+You can work with a git repo on multiple computers using a file sync service such as Dropbox. All the repo files will sync as normal, but the repo status and branches will sync as well. All of this info is stored internally in a hidden folder named `.git`, so as long as your syncing service doesn't exclude hidden files (which might be a user-configurable setting) all info about the repo will sync as well. There's no need to `git push` the repo from your desktop so that you can `git pull` on your laptop to work with it later.
 
 
 
