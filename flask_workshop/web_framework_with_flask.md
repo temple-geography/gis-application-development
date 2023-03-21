@@ -86,7 +86,7 @@ def hello():
 
 Usually, however, we don't just stick static web pages in the template folder. The most powerful part of Jinja is template inheritance. This allows you to build a base template that contains all the common elements of your site and defines blocks that child templates can override. Jinja uses {% %} as notation.
 
-```
+```html
 <!DOCTYPE html>
 
 <html>
@@ -136,7 +136,7 @@ def login():
 
 This workshop focused more on the back-end framework but many flask applications use Bootstrap for front-end styling.  Many customizable layouts can be implemented in your templates for a better look.  Here's an example of a template that uses a navigation bar from Bootstrap.
 
-```
+```html
 <!DOCTYPE html>
 
 <html>
