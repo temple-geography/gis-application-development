@@ -1,7 +1,9 @@
 # Web Framework with Flask
-Flask is a micro web framework written in Python. It aims to keep the core simple, and unlike some other frameworks, makes no decisions for you.  Flask supports extensions such as database integration, form validation, and user authentication.  
+
+Flask is a micro web framework written in Python. It aims to keep the core simple, and unlike some other frameworks, makes no decisions for you.  Flask supports extensions such as database integration, form validation, and user authentication.
 
 ## Setting up the directory
+
 By convention, templates and static files are stored in subdirectories within the application's source tree, with the names `templates` and `static`. The more complex the project is, the more directories are used for organization. This workshop will focus on quick single module projects. The project tree could look like this:
 
 ```
@@ -11,11 +13,13 @@ requirements.txt
 static/
 templates/
 ```
+
 Application logic would go in the app.py file.
 
 
 ## A simple app
-```
+
+```python
 from flask import Flask
 
 app = Flask(__name__)
@@ -30,10 +34,33 @@ if __name__=='__main__'
 
 We import the Flask module and instantiate the application.  Next, we use the `route()` decorator to tell Flask what URL should trigger our function. The function is given a name which is also used to generate URLs for that particular function and returns the message we want to display.  Lastly, running the app in debug mode allows us to easily see the changes we make without restarting the server.
 
+After examining the `flask_hello.py` script file, open the Anaconda Prompt and activate a conda environment with Flask installed (such as our course environment). Navigate to the `flask_hello` folder. Load the web application with:
+
+```sh
+python flask_hello.py
+```
+
+Note the messages in the terminal:
+
+```sh
+ * Serving Flask app 'flask_hello'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+```
+
+Then in your web browser, navigate to <http://127.0.0.1:5000>.
+
+When you have confirmed that it working correctly, press <kbd>Ctrl</kbd> + <kbd>C</kbd> to quit.
+
+A list of the additional demo apps appears at the bottom of this document.
 
 ## Routes
+
 The `route()` decorator is used to bind a function to a URL.
-```
+
+```python
 @app.route('/')
 def hello():
 	return "Hello, World!"
@@ -44,15 +71,21 @@ def about():
 ```
 
 ## Templates
+
 Generating HTML from within Python can be very cumbersome because you have to do the HTML escaping on your own to keep the application secure. Because of that Flask configures the Jinja2 template engine for you automatically. To render a template you can use the `render_template()` method. All you have to do is provide the name of the template and the variables you want to pass to the template engine as keyword arguments.
-```
+
+Note that this example does not exist in the workshop folder. You could create a template `hello.html` containing the text "Hello, World!" to render, but we will explore static web pages in the `flask_map` app.
+
+```python
 from flask import render_template
 
-@app.route('/hello/')
+@app.route('/hello')
 def hello():
     return render_template('hello.html')
 ```
-The most powerful part of Jinja is template inheritance. This allows you to build a base template that contains all the common elements of your site and defines blocks that child templates can override. Jinja uses {% %} as notation.
+
+Usually, however, we don't just stick static web pages in the template folder. The most powerful part of Jinja is template inheritance. This allows you to build a base template that contains all the common elements of your site and defines blocks that child templates can override. Jinja uses {% %} as notation.
+
 ```
 <!DOCTYPE html>
 
@@ -72,7 +105,9 @@ The most powerful part of Jinja is template inheritance. This allows you to buil
     </body>
 </html>
 ```
+
 The {% block %} tags define blocks that child templates can fill in. Notice how common Python looping and conditionals can be used.  Be sure to close with the appropriate notation.  For example {% for...%} {% endfor %} 
+
 ```
 {% extends "layout.html" %}
 
@@ -80,12 +115,15 @@ The {% block %} tags define blocks that child templates can fill in. Notice how 
     Welcome to my homepage!
 {% endblock %}
 ```
+
 The {% extends %} tag locates the parent template for rendering.
 
 
 ## HTTP Methods
+
 Web applications use different HTTP methods when accessing URLs. You can use the methods argument of the `route()` decorator to handle different HTTP methods. By default, a route only answers to GET requests. Use a POST request with sensitive information.
-```
+
+```python
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -95,7 +133,9 @@ def login():
 ```
 
 ## Bootstrap
+
 This workshop focused more on the back-end framework but many flask applications use Bootstrap for front-end styling.  Many customizable layouts can be implemented in your templates for a better look.  Here's an example of a template that uses a navigation bar from Bootstrap.
+
 ```
 <!DOCTYPE html>
 
@@ -150,6 +190,17 @@ This workshop focused more on the back-end framework but many flask applications
 You would then extend this layout to any template using the notation mentioned above.
 
 ## Examples
+
+1. Hello, world: `flask_hello`
+2. Loading more complex, static web pages: `flask_map`
+3. Simple form: `flask_buttons`
+4. Simple API: `flask_api`
+    * Acceptable years are 2020 and 2021
+
+In each case, navigate to the indicated folder and call `python script.py` at the command line. Then load <http://127.0.0.1:5000/> in your web browser.
+
+
+<!--
 1. Sign up for GUS 8066 with the flask-wtf extension
 2. Areal Weighting Interpolation
 
@@ -157,6 +208,10 @@ You would then extend this layout to any template using the notation mentioned a
 1. User Authentication
 2. Database Access/Management
 
-[Flask documentation](https://flask.palletsprojects.com/en/1.1.x/)
-[Jinja2 documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/)
-[Bootstrap](https://getbootstrap.com/)
+-->
+
+## Documentation
+
+* [Flask documentation](https://flask.palletsprojects.com/en/1.1.x/)
+* [Jinja2 documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/)
+* [Bootstrap](https://getbootstrap.com/)
