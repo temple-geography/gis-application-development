@@ -8,8 +8,8 @@ def index():
 
 @app.route('/quiz', methods=["GET"])
 def quiz(): 
-    course= request.args.get('cour')
-    return render_template("quiz.html",course=course) 
+    course = request.args.get('cour')
+    return render_template("quiz.html", course = course) 
 
 if __name__=='__main__':
     app.run(debug=True)
