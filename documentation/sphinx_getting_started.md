@@ -65,7 +65,7 @@ At the very least, your docstring should include these three elements:
 * **Parameters** (or a statement that there are no input parameters).
 * **Return** type and value (or a statement that the function or method returns None).
 
-NumPy supports a total of 15 different sections *which which not cover all be covered here*. The full list is available at the [NumPy Style Guide Docstring Standard](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard).
+NumPy supports a total of 15 different sections *which will not all be covered here*. The full list is available at the [NumPy Style Guide Docstring Standard](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard).
 
 Some useful sections are:
 
@@ -113,11 +113,11 @@ extensions = [
 ]
 ```
 
-For aesthetics, you can change the html theme as well. Try `'sphinx_rtd_theme'` instead of the default (currently alabaster.
+For aesthetics, you can change the html theme as well. Try `'sphinx_rtd_theme'` instead of the default (currently alabaster).
 
 #### Step 4: Creating .rst Files from Python Files
 
-Run `sphinx-apidoc`. To specify output path and sourcepath, use `-o . .` this command specificaly would use current folder as output path and look for .py files in the current folder. This will create an .rst file for each python file based on the docstrings in them. 
+Run `sphinx-apidoc`. To specify output path and sourcepath, use `-o . .`. This command specificaly would use the current folder as the output path and look for .py files in the current folder. This will create an .rst file for each python file based on the docstrings in them. 
 
 #### Step 5: Adding .rst Files to your Table of Contents
 
