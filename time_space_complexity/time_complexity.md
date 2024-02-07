@@ -11,13 +11,13 @@ $O$
 $O(1)$
 : An algorithm in which runtime is not affected by input size, referred to as constant time
 
-$O(log n)$
+$O(log{n})$
 : An algorithm in which runtime increase with the logarithm of input size.
 
 $O(n)$
 : An algorithm in which runtime increases linearly with input size, referred to as linear time.
 
-$O(n log n)$
+$O(n*log{n})$
 : An algorithm in which runtime increases as the product of input size and the log of input size.
 
 $O(n^2)$
