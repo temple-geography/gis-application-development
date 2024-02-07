@@ -1,68 +1,114 @@
-
-import numpy as np #for numpy operations
-from numpy import arange #to create lists
-import timeit # to test the performance of different solutions
-from timeit import Timer 
-from sys import getsizeof #to check the size of memory different objects take
-from timeit import repeat #for repeated timing runs
-import random #for creating random lists
-   
-#%%Timing: Simple Timeit use case
-   
-print(timeit.timeit('output = 10 * 12'))
-   
-# Timing multiple lines of code: Use semicolons or triple quotes
-   
-print("The time taken is ",timeit.timeit(stmt='a=10;b=12;output=a*b'))
-   
-print(timeit.timeit('''
-a = 10
-b = 12
-output = a*b
-'''))
-   
-# You can define the number of times for timeit to run your code (the default is 1,000,000)
-   
-print(timeit.timeit('''
-a = 10
-b = 12
-output = a*b
-''', number = 200000))
-   
-# Functions can be passed from main into timeit"
-   
-def list1():
-    L = [1,3,2,4,5,7,6,8]
-    L.sort()
-    
-if __name__ == '__main__':
-    print(timeit.timeit("list1()", setup = "from __main__ import list1"))
+#%%
+import numpy as np 
+from timeit import timeit
+from timeit import repeat
+import random 
 
 #%% Test the speed of Numpy vs. Lists"
-from numpy import arange
+import numpy as np
    
-Nelements = 10000
-Ntimeits = 10000
+n_elements = 10000
+
+def sum_numpy():
+    x = np.arange(n_elements)
+    return x.sum()
+
+def sum_list():
+    y = range(n_elements)
+    return sum(y)
     
-x = arange(Nelements)  #comparing numpy vs. built-in python range function
-y = range(Nelements)
-    
-t_numpy = Timer("x.sum()","from __main__ import x")
-t_list = Timer("sum(y)", "from __main__ import y")
+t_numpy = timeit(sum_numpy, number = 10000)
+t_list = timeit(sum_list, number = 10000)
+
+print("numpy sums:", t_numpy)
+print("list sums:", t_list)
+
+print("numpy compared to lists:", f"{t_numpy/t_list:.2%}")
+
+#%% Code can also be passed in as strings
+#   In this case, necessary imports must be included in setup code
+
+sum_numpy = """
+x = np.arange(n_elements)
+x.sum()"""
+
+sum_list = """
+y = range(n_elements)
+sum(y)"""
+
+setup_code = """
+import numpy as np
+n_elements = 10000
+"""
+
+t_numpy = timeit(sum_numpy, number = 10000, setup = setup_code)
+t_list = timeit(sum_list, number = 10000, setup = setup_code)
+
+print("numpy sums:", t_numpy)
+print("list sums:", t_list)
+
+print("numpy compared to lists:", f"{t_numpy/t_list:.2%}")
+
+#%% Alternatively, give access to the globals namespace, which includes
+#   imported modules.
+import numpy as np
    
-print("numpy: %.3e" % (t_numpy.timeit(Ntimeits)/Ntimeits,))
-print("list:  %.3e" % (t_list.timeit(Ntimeits)/Ntimeits,))
-  
-### Timeit can also be executed via the command line using: python -m timeit \"Statement....\""
-### Timeit works best on small snippets of code, for larger code you can use CPU profiling at the command line"
+n_elements = 10000
 
-#%% timeit.repeat function
-# calls timeit() repeatedly and returns a list of results
-#syntax: repeat(repeat=5, number=1000000)
+sum_numpy = """
+x = np.arange(n_elements)
+x.sum()"""
 
-# print(timeit.repeat(stmt, setup, repeat))
+sum_list = """
+y = range(n_elements)
+sum(y)"""
+
+setup_code = """
+import numpy as np
+n_elements = 10000
+"""
+
+t_numpy = timeit(sum_numpy, number = 10000, globals=globals())
+t_list = timeit(sum_list, number = 10000, globals=globals())
+
+print("numpy sums:", t_numpy)
+print("list sums:", t_list)
+
+print("numpy compared to lists:", f"{t_numpy/t_list:.2%}")
+
+#%% You will get more stable estimates using the repeat method of the timeit
+#   module. This does *not* repeat setup code, if any
+
+import numpy as np
+   
+n_elements = 10000
+
+sum_numpy = """
+x = np.arange(n_elements)
+x.sum()"""
+
+sum_list = """
+y = range(n_elements)
+sum(y)"""
+
+setup_code = """
+import numpy as np
+n_elements = 10000
+"""
+
+t_numpy = repeat(sum_numpy, number = 1000, repeat = 5, globals=globals())
+t_list = repeat(sum_list, number = 1000, repeat = 5, globals=globals())
+
+print("numpy sums:", t_numpy)
+print("list sums:", t_list)
+
+print("numpy compared to lists:", f"{sum(t_numpy)/sum(t_list):.2%}")
+
+
 #%% Python program for implementation of Bubble Sort 
-  
+
+import random
+
 def bubbleSort(arr):
     n = len(arr)
   
@@ -100,11 +146,11 @@ bubbleSort(rand_arr)
 '''
 
 # Number defaults to 1,000,000
-print(timeit.timeit(stmt = test_code1, setup = setup_code1))
-
+# print(timeit(stmt = test_code1, setup = setup_code1))
+print(timeit(test_code1, globals=globals()))
 # Sorting a list of 100 elements is slower. Reduce number to 1,000, repeat 5 times
-print(timeit.repeat(stmt = test_code2, setup = setup_code2, number = 1000, repeat= 5))  
-    
+#print(repeat(stmt = test_code2, setup = setup_code2, number = 1000, repeat= 5))  
+print(repeat(test_code2, number = 1000, repeat=5, globals=globals()))   
 #%%Bubble sort-- optimized form
 
 # Python3 Optimized implementation
