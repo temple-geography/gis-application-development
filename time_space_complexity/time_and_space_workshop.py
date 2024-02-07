@@ -6,17 +6,6 @@ from timeit import Timer
 from sys import getsizeof #to check the size of memory different objects take
 from timeit import repeat #for repeated timing runs
 import random #for creating random lists
-
-#%% SIZE: We can use the getsizeof function to measure how much space a list or array uses
-   
-n_elements = 100000
-x_list = [x for x in range(n_elements)]
-getsizeof(x_list)
-  
-x_np = np.array(x_list)
-getsizeof(x_np)
-   
-getsizeof(x_list) - getsizeof(x_np)
    
 #%%Timing: Simple Timeit use case
    
@@ -59,23 +48,6 @@ x = arange(Nelements)  #comparing numpy vs. built-in python range function
 y = range(Nelements)
     
 t_numpy = Timer("x.sum()","from __main__ import x")
-t_list = Timer("sum(y)", "from __main__ import y")
-   
-print("numpy: %.3e" % (t_numpy.timeit(Ntimeits)/Ntimeits,))
-print("list:  %.3e" % (t_list.timeit(Ntimeits)/Ntimeits,))
-  
-### Timeit can also be executed via the command line using: python -m timeit \"Statement....\""
-### Timeit works best on small snippets of code, for larger code you can use CPU profiling at the command line"
-
-#%% Test the speed of Numpy vs. Lists"
-   
-Nelements = 10000
-Ntimeits = 10000
-    
-x = arange(Nelements)
-y = range(Nelements)
-    
-t_numpy = Timer("x.sum()", "from __main__ import x")
 t_list = Timer("sum(y)", "from __main__ import y")
    
 print("numpy: %.3e" % (t_numpy.timeit(Ntimeits)/Ntimeits,))
