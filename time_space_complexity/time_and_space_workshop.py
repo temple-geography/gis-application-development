@@ -63,11 +63,6 @@ sum_list = """
 y = range(n_elements)
 sum(y)"""
 
-setup_code = """
-import numpy as np
-n_elements = 10000
-"""
-
 t_numpy = timeit(sum_numpy, number = 10000, globals=globals())
 t_list = timeit(sum_list, number = 10000, globals=globals())
 
@@ -126,20 +121,11 @@ def bubbleSort(arr):
   
 
 
-#create setup and test codes for timing
-setup_code1='''
-from __main__ import bubbleSort
-'''
-
 test_code1='''
 arr = [64, 34, 25, 12, 22, 11, 90, 74]
 bubbleSort(arr)
 '''
 
-setup_code2='''
-from __main__ import bubbleSort
-import random
-'''
 test_code2='''
 rand_arr = random.sample(range(1000), 100)
 bubbleSort(rand_arr)
@@ -151,12 +137,28 @@ print(timeit(test_code1, globals=globals()))
 # Sorting a list of 100 elements is slower. Reduce number to 1,000, repeat 5 times
 #print(repeat(stmt = test_code2, setup = setup_code2, number = 1000, repeat= 5))  
 print(repeat(test_code2, number = 1000, repeat=5, globals=globals()))   
+
 #%%Bubble sort-- optimized form
 
+import random
+
+def bubbleSort(arr):
+    n = len(arr)
+  
+    # Traverse through all array elements
+    for i in range(n):
+  
+        # Last i elements are already in place
+        for j in range(0, n-i-1):
+  
+            # traverse the array from 0 to n-i-1
+            # Swap if the element found is greater
+            # than the next element
+            if arr[j] > arr[j+1] :
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+  
 # Python3 Optimized implementation
 # of Bubble sort
-
-# An optimized version of Bubble Sort
 def bubbleSort_optim(arr):
 	n = len(arr)
 
@@ -181,22 +183,24 @@ def bubbleSort_optim(arr):
 		if swapped == False:
 			break
 
-#construct setup and test codes for timing		
-setup_code1='''
-from __main__ import bubbleSort_optim
-'''
+
 test_code1='''
-arr = [64, 34, 25, 12, 22, 11, 90, 73]
+rand_arr = random.sample(range(1000), 100)
+bubbleSort(rand_arr)
 '''
-setup_code2='''
-from __main__ import bubbleSort_optim
-import random
-'''
+
 test_code2='''
-random_arr= random.sample(range(1000), 100)
+rand_arr = random.sample(range(1000), 100)
+bubbleSort_optim(rand_arr)
 '''
-print(timeit.timeit(stmt=test_code1, setup= setup_code1, number= 10000))
-print(timeit.repeat(stmt=test_code2, setup=setup_code2, number= 1000000, repeat= 5))
+
+t_bubble_sort = timeit(stmt=test_code1, number= 10000, globals=globals())
+t_bubble_sort_optim = timeit(stmt=test_code2, number= 10000, globals=globals())
+
+print("Basic bubblesort:", t_bubble_sort)
+print("Optimized bubblesort:", t_bubble_sort_optim)
+
+print("Basic bubblesort compared to optimized bubblesort:", f"{t_bubble_sort/t_bubble_sort_optim:.2%}")
 
 #%%bubble sort w/out loop
  
