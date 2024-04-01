@@ -59,7 +59,7 @@ The environment file includes the Spyder IDE. If you prefer another IDE, you can
     * :rocket: Sprint 3
 * Week 10 - Distributing Software
     * :hammer_and_wrench: Workshop: [Packaging in Python](distributing_software/packaging.md)
-    * :hammer_and_wrench: Workshop: [Freezing in Python](distributing_software/freezing.md)
+    * :hammer_and_wrench: Workshop: [Freezing an Application with PyInstaller](distributing_software/freezing.md)
     * :rocket: Sprint 3 (cont.)
 * Weeks 11-12 - Term Project
     * :rocket: Sprint 4
