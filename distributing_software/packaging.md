@@ -127,9 +127,11 @@ flit publish --repository testpypi
 
 If you set up `.pypirc` correctly, you should not be prompted for login credentials. The username (`__token__`) and password (actually your API token) will be read from that file. If username or password are missing, you will be prompted to provide them, *but remember that you cannot use password authentication to upload files to PyPI and TestPyPI*. If prompted, you still have to supply the username `__token__` and your API token as the password.
 
-When I first ran `flit build`, I got the message `Fetching list of valid trove classifiers` and then nothing happened for a good 15 minutes. I'm not sure why this step took so long, but it should only happen the first time you run `flit build`. After that, package building took mere seconds (and was significantly faster than using the standard Python `build` tool).
+When it is done, your package URL will appear in the terminal. Depending on what terminal application you are using, you may be able to CTRL-click this link to go to your TestPyPI project page. Otherwise, copy the link, or login to <http://test.pypi.org> and go to "Your projects".
 
-After the build completed, the uploading step took about 5 minutes, even for such a small package as this. When it is done, your package URL will appear in the terminal. You should be able to CTRL-click this link to go to your TestPyPI project page.
+On Windows, packaging took mere seconds (significantly faster than using the standard Python `build` tool). Flit seems to run considerably slower on Linux. When I first ran `flit build` on Linux, I got the message `Fetching list of valid trove classifiers` and then nothing happened for a good 15 minutes. I'm not sure why this step took so long, but it should only happen the first time you run `flit build`. After that, package building took mere seconds.
+
+`flit publish` also ran faster on Windows (mere seconds) than Linux (a few minutes), even on the same network. 
 
 # REFERENCES
 

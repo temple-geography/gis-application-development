@@ -2,41 +2,102 @@
 
 ## What is PyInstaller
 
-PyInstaller bundles a Python application and all its dependencies into a single package.  It reads a Python script, analyzes the code to discover every other necessary module and library, collects copies of all those files (including the active Python interpreter), and packages into a single folder, or optionally in a single executable file.
+PyInstaller bundles a Python application and all its dependencies into a single folder or file. In Python parlance, this is referred to as **freezing** the application. PyInstaller reads a Python script, analyzes the code to discover every other necessary module and library, collects copies of all those files (including the active Python interpreter), and bundles it into a single folder or executable file.
 
-## One Folder Option
+## Preparation
 
-This is the default option for bundling the application.  This folder contains all your script’s dependencies and an executable file also named myscript.  It is easy to debug problems that occur when building the app when you use one-folder mode. You can see exactly what files PyInstaller collected into the folder.  A small disadvantage of the one-folder format is that the folder contains a large number of files. Your user must find the myscript executable in a long list of name. Also, your user can create a problem by accidentally dragging files out of the folder.
+These instructions are written primarily for a Windows computer with Anaconda Python installed.
 
-`pyinstaller script.py`
+This workshop requires a Python environment with the following packages installed:
 
-## One File Option
+* PyInstaller
+* PyQT5
+* Pillow
 
-The one executable file contains an embedded archive of all the Python modules used by your script as well as compressed copies of any non-Python support files.  The advantage is that your users get something they understand, a single executable to launch. A disadvantage is that any related files such as a README must be distributed separately. Also, the single executable is a little slower to start up.
+All of these packages are included in the `gus8066` environment. Open the Anaconda Prompt and activate the `gus8066` environment (or any environment with the necessary packages).
 
-`pyinstaller --onefile or -F script.py`
+Create a folder called `temp_converter`, and download the files `converter.py` and `thermometer.png`.
 
-## Console vs. Windowed
+Look at `converter.py`. This is a PyQT script that opens a main window with a simple application. The application logic is contained in the following function:
 
-By default, PyInstaller creates a command-line console (a terminal window in Linux and Mac OS, a command window in Windows). It gives this window to the Python interpreter for its standard input and output. Your script’s use of `print()` and `input()` are directed here. 
+```python
+def convert(self, window):
+	self.i1 = self.comboBox.currentText()
+	self.i2 = self.comboBox_2.currentText()
+	inp = float(self.textEdit.toPlainText())
+	if self.i1 == 'Celsius':
+		if self.i2 == 'Celsius':
+			result = inp
+		else:
+			result = 9*inp/5+32
+	elif self.i1 == 'Fahrenheit':
+		if self.i2 == 'Celsius':
+			result = ((inp-32)/9)*5
+		else:
+			result= inp
 
-If the console window is not desired, for example with a Graphical User Interface, the following command would be used.
-
-`pyinstaller -w or --windowed or --noconsole script.py`
-
-## Running PyInstaller in Python
+	self.textEdit_2.setText(str(round(result,8)))
 ```
-import PyInstaller.__main__
 
-PyInstaller.__main__.run([
-    'my_script.py',
-    '--onefile',
-    '--windowed'
-])
+Prior to running PyInstaller, you can test this application by running `converter.py` in your IDE, or by running `python converter.py` in the terminal or command prompt.
+
+The course repo includes the file `converter.ui`. This is a UI file created by QT Designer. It is included for completeness, but we have already processed `converter.ui` to create `converter.py`, the Python script that launches the GUI application.
+
+## Running PyInstaller
+
+In the terminal, navigate to `temp_converter`, the folder that contains `converter.py`.
+
+Run the following command:
+
+```sh
+pyinstaller -F -w -i thermometer.png converter.py
 ```
 
-This would be the same as running `pyinstaller --onefile --windowed my_script.py`
+Look in the folder `temp_converter`. There should be two new folders: `build` and `dist`. Inside the folder `dist`, you should have one executable file with a thermometer icon. On Windows, this will be called `converter.exe`.
 
-See the documentation for more detail on options for bundling as well as debugging tips and changing specs
-[PyInstaller Documentation](https://pyinstaller.readthedocs.io/en/stable/index.html)
+## Understanding the Command Line Options
+
+We ran PyInstaller using the options `-F`, `-w`, and `-i`.
+
+### `-F` or `--onefile`
+
+`-F` (an alias for `--onefile`) creates a single-file executable. This file includes the Python interpreter (so that the user does not need a Python installation to run your file). For our simple application, the source code is 2 KB, but the frozen application is 51 MB.
+
+Omitting `-F` (or replacing it with `-D`, which is the default) produces a single-folder application. I won't demonstrate it in class, but you can try it on your own. In this case you will get a folder named `converter`, which contains a much smaller executable (1 MB) and a bunch of supporting files.
+
+For applications with many imports of large packages, using the one-folder option may be preferable. However, this also raises the possibility of the user not copying all of the application files. If you use the one-folder option, you may want to create an installer or setup application to aid in installing your application. This is beyond the scope of this workshop.
+
+Note that for MacOS, the one-file method is not advised.
+
+### `-w` or `--windowed`
+
+The `converter.py` application is a GUI (windowed) application. We don't want a console to appear when we run it. We achieve this using the `-w` switch.
+
+If you are instead creating a command line application, i.e. one that is intended to be run in the console, omit `-w` (r replace it with `-c`, which is the default).
+
+### `-i`
+
+`-i` is used to pass the path to an icon file (`*.ico` on Windows, `*.icns` on MacOS). If the file is not already in the icon file format, PyInstaller attempts to use Pillow to convert the image file to an icon. Pillow is available in the `gus8066` conda environment.
+
+If your application does not have a custom icon, omit `-i`.
+
+### Other Options
+
+PyInstaller has many other options. Please refer to [Using PyInstaller](https://pyinstaller.org/en/stable/usage.html).
+
+Of particular use is `--clean`. If you run PyInstaller more than once on the same application, you may need to use `--clean` to make sure that you get a fresh build of your application.
+
+## Supporting Multiple Operating Systems
+
+PyInstaller is not a [cross compiler](https://en.wikipedia.org/wiki/Cross_compiler). From the documentation:
+
+> If you need to distribute your application for more than one OS, for example both Windows and macOS, you must install PyInstaller on each platform and bundle your app separately on each.
+> 
+> Source: <https://pyinstaller.org/en/stable/usage.html#supporting-multiple-operating-systems>
+
+It is fantastic that Python is a cross-platform programming language, but there is still significant work involved in distrubting a cross-platform application. If you use PyInstaller to distribute your application to multiple OSes, please refer to the documentation.
+
+## REFERENCES
+
+[PyInstaller Manual](https://pyinstaller.org/)
  
