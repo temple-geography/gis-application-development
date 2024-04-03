@@ -1,3 +1,8 @@
+---
+title: Python Packaging with Flit
+author: Lee Hachadoorian
+---
+
 # Preparation
 
 ## Creating and Configuring a User Account on TestPyPI
