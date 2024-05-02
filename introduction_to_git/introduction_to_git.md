@@ -43,7 +43,7 @@ All work in Git is in a **repository**, or "repo". There are two ways to get sta
 
 ### Adding an Existing Project to Git
 
-**For class, we will not perform these steps, as we will focus on working in a project that is already on GitHub. If you are starting (or have recently started) a new project, it is usually easier to create a new, empty repo in GitHub first and clone it locally. (If you had already done some work, you can move the files into the new repo.) Therefore, the instructions in this section are only really useful if you have done significant work on a project locally and decided later to add it to GitHub.**
+**For class, we will not perform these steps, as we will focus on working in a project that is already on GitHub. If you are starting a new project, it is usually easier to create a new, empty repo in GitHub first and clone it locally. (If you have already done some work, you can move the files into the new, empty repo.) Therefore, the instructions in this section are only really useful if you have done significant work on a project locally and later decide to add it to GitHub.**
 
 To add your existing local project to Git, you **initialize** it by navigating to the project folder in the terminal and giving the following command:
 
@@ -55,7 +55,7 @@ Then follow instructions at <https://docs.github.com/en/github/importing-your-pr
 
 Optionally, you can specify the name of the main branch using the `-b` switch. GitHub (the organization) is moving toward a convention of using `main` as the name of the main branch, and the instructions above use `git init -b main` to initialize a project using this convention. The Git default if no name is specified is `master`, and (as of January 2023) this still is still pretty widespread among projects on GitHub.
 
-You do not need to specify any info about the project, such as a project name. The project name will be taken from the name of the folder that you run the `git init` command in. **Do make sure that this folder name does not have any spaces in it.** GitHub project names use a variety of different naming conventions, but it seems to me that the most common convention is all lower case with hyphens as word separators, e.g. `my-awesome-project`.
+You do not need to specify any info about the project, such as a project name. The project name will be taken from the name of the folder that you run the `git init` command in. **Do make sure that this folder name does not have any spaces in it.** GitHub project names use a variety of different naming conventions, but it seems that the most common convention is all lower case with hyphens as word separators, e.g. `my-awesome-project`.
 
 ### Cloning a Repo
 
@@ -64,7 +64,7 @@ For this workshop, you will clone the `temple-geography/git-practice` repo. If y
 > For a new project:
 > 
 > * **DO** create a README for your project.
-> * **DO** create a *.gitignore*. GitHub offers several *.gitignore* templates based specific programming languages. If you know what programming language your project will be using, the selected *.gitignore* will ignore file types and folders commonly used for that programming language.
+> * **DO** create a *.gitignore*. GitHub offers several *.gitignore* templates based specific programming languages (<https://github.com/github/gitignore>). If you know what programming language your project will be using, the selected *.gitignore* will ignore file types and folders commonly used for that programming language.
 > * It is also a good idea to choose a license. See <https://choosealicense.com/> for more information.
 > 
 > Our practice project already exists on GitHub, so you can ignore these steps.
@@ -252,7 +252,7 @@ Continue working with the student you partnered with in the last step. For this 
 
 Git should not be used for sensitive data, such as passwords or API keys. If, for example, you are developing an application that uses a cloud service such as AWS or Azure, you should not include your credentials in the code committed to a repository. *Since Git preserves the history of all files committed to a repo, you cannot just delete the sensitive data!* You will have to rewrite the repo history to purge the file. Information on how to do this is available at <https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository>.
 
-Git is not ideal for working with large files. This is particularly important to keep in mind for GIS data, which can often be quite large. Git maintains all versions of a binary file, so if your data is regularly changing, the size of you repo will inflate rapidly. Additionally, you may not need Git's versioning tools for your data. If you do, you might consider using Git Large File Storage (<https://docs.github.com/en/github/managing-large-files/versioning-large-files>). But, really, probably consider using a database such as PostGIS.
+Git is not ideal for working with large files. This is particularly important to keep in mind for GIS data, which can often be quite large. Git maintains all versions of a binary file, so if your data is regularly changing, the size of you repo will inflate rapidly. Additionally, you probably don't need Git's versioning tools for your data. If you do, you might consider using Git Large File Storage (<https://docs.github.com/en/github/managing-large-files/versioning-large-files>). But, really, probably consider using a database such as PostGIS.
 
 Since Git preserves all file history, if you once had a large data file in your repo, all new collaborators will get that file when they clone or fork your repo, even if it is currently deleted! You will probably want to purge the file from the repo history, using the same procedures as above for removing files with sensitive data from the repo history.
 
