@@ -4,16 +4,18 @@ channels:
   - defaults
 dependencies:
   - python
-  - spyder
-  - pyqtwebengine
   - geopandas
   - rasterio
   - descartes
   - matplotlib
-  - sqlalchemy
-  - psycopg2
-  - flask
-  - sphinx
-  - sphinx_rtd_theme
-  - pyinstaller
-prefix: /home/user/miniconda3/envs/gus8066
+  - sqlalchemy # Database Access
+  - psycopg2 # Database Access
+  - flask # Web Applications and Dashboards
+  - sphinx # Documentation
+  - sphinx_rtd_theme # documentation
+  - pyqt==5 # GUI Design
+    # pyqt5 is current default, but big changes in pyqt6, 
+    # so make sure doesn't accidentally increment
+  - pyinstaller # Distributing Software - Freezing
+  - pillow # required by pyinstaller for icon image conversion
+  - flit # Distributing Software - Packaging
