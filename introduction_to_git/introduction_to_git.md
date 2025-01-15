@@ -219,13 +219,13 @@ In demoing the above, I will have created a new file, edited, and added it to th
 
 Once pushed, you can go to GitHub and you will see the new branch. In order to merge this branch, you will create a **pull request** (PR). When you create a PR, the **base** branch is the one you want to merge your work into (often `main`). The **compare** branch is the one with the new work.
 
-When creating a PR, you may change the message so that it makes sense within the broader project (i.e., don't have to keep the commit message), and you should add a detailed comment. Do not merge your own PRs! PRs should be reviewed by at one other developer on your team.
+When creating a PR, you may change the message so that it makes sense within the broader project (i.e., don't have to keep the commit message), and you should add a detailed comment. Do not merge your own PRs! PRs should be reviewed by at least one other developer on your team.
 
-Pair up with another student and to practice working on pull requests. 
+Pair up with another student and practice working on pull requests. 
 
 1. Go to GitHub and create a pull request from your `feature-name2` branch to your `feature-name` branch. Assign the other student in your pair as the reviewer.
 2. Look at the repo's pull requests. If your partner did step 1 correctly, you should see that "You have a pending review request". Click on it to look at the pull request.
-3. Since these changes were made in branches that no one else was working in, you should see a message that "This branch has not conflicts with the base branch". Click the "Merge pull request" button.
+3. Since these changes were made in branches that no one else was working in, you should see a message that "This branch has no conflicts with the base branch". Click the "Merge pull request" button.
 4. When the branch has been merged, you can close the pull request. You should also see a message that the merged branch can be deleted. Go ahead and delete the branch.
 5. When your partner has approved your PR, go back to the command line and run `git status -vv`. Note that you still have your `feature-name2` branch, but the remote branch is no longer there. You need to manually delete the local branch. Check out any other branch, then delete the unneeded feature branch with `git branch --delete feature-name2`.
 
@@ -247,16 +247,16 @@ Continue working with the student you partnered with in the last step. For this 
 
 1. Gimli should pull and checkout `feature-legolas` with tracking, as demonstrated above.
 2. Gimli should branch off of `feature-legolas`. The branch can be named anything, e.g. `feature-legolas-gimli` or `feature-legolas-mod`. Make changes to the beginning of the file and at multiple places throughout. Remember, we are *trying* to create conflicts that can't be easily resolved.
-3. Legolas should make changes directly to `feature-legolas`. That is, don't what we normally should do, which is branch first. We are *trying* to create conflicts. Make changes to the beginning of the file and at multiple places throughout. Legoals should push their branch to GitHub.
+3. Legolas should make changes directly to `feature-legolas`. That is, don't branch first (which is what we normally *should* do). We are *trying* to create conflicts. Make changes to the beginning of the file and at multiple places throughout. Legolas should push their branch to GitHub.
 4. Gimli should now push their feature branch to GitHub. Then, create a PR trying to merge this branch into `feature-legolas`. Tag Legolas as the reviewer.
-5. Legolas should review the PR. GitHub will let you know there are merge conflicts. You can examine the conflicts using GitHub's web editor. It will show you the file with *both* contributors changes highlighted in various places. Legolas can edit the file directly here, choosing which changes to keep, or creating something completely new. When he is done, he can select "Mark as resolved", then confirm the pull request.
+5. Legolas should review the PR. GitHub will let you know there are merge conflicts. You can examine the conflicts using GitHub's web editor. It will show you the file with *both* contributors' changes highlighted in various places. Legolas can edit the file directly here, choosing which changes to keep, or creating something completely new. When he is done, he can select "Mark as resolved", then confirm the pull request.
 6. Since changes have been made on the remote `feature-legolas` branch that are not reflected locally (unless Legolas just rejected all of Gimli's changes, in which case the post-merge remote branch will be the same as his local branch), both developers should pull the remote branch to their local repos.
 
 # Git Gotchas
 
 Git should not be used for sensitive data, such as passwords or API keys. If, for example, you are developing an application that uses a cloud service such as AWS or Azure, you should not include your credentials in the code committed to a repository. *Since Git preserves the history of all files committed to a repo, you cannot just delete the sensitive data!* You will have to rewrite the repo history to purge the file. Information on how to do this is available at <https://docs.github.com/en/github/authenticating-to-github/removing-sensitive-data-from-a-repository>.
 
-Git is not ideal for working with large files. This is particularly important to keep in mind for GIS data, which can often be quite large. Git maintains all versions of a binary file, so if your data is regularly changing, the size of you repo will inflate rapidly. Additionally, you probably don't need Git's versioning tools for your data. If you do, you might consider using Git Large File Storage (<https://docs.github.com/en/github/managing-large-files/versioning-large-files>). But, really, probably consider using a database such as PostGIS.
+Git is not ideal for working with large files. This is particularly important to keep in mind for GIS data, which can often be quite large. Git maintains all versions of a binary file, so if your data is regularly changing, the size of you repo will inflate rapidly. Additionally, you probably don't need Git's versioning tools for the *data*. If you do, you might consider using Git Large File Storage (<https://docs.github.com/en/github/managing-large-files/versioning-large-files>). But, really, probably consider using a database such as PostGIS.
 
 Since Git preserves all file history, if you once had a large data file in your repo, all new collaborators will get that file when they clone or fork your repo, even if it is currently deleted! You will probably want to purge the file from the repo history, using the same procedures as above for removing files with sensitive data from the repo history.
 
