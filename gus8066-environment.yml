@@ -8,6 +8,7 @@ dependencies:
   - rasterio
   - descartes
   - matplotlib
+  - pytest # Testing
   - sqlalchemy # Database Access
   - psycopg2 # Database Access
   - flask # Web Applications and Dashboards
