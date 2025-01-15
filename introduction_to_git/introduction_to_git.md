@@ -19,14 +19,18 @@ Master Branch
 
 # Preparation
 
-1. **Install Git:** Git is the actual software for version control. It can be downloaded from <https://git-scm.com/downloads>.
-2. **Install a GUI Client (Optional):** Git comes with a command line interface (CLI). You may prefer to work in a GUI client. There are many, and they are evolving rapidly, so they are not listed here. You may be interested in starting with GitHub Desktop.
+1. **Install Git:** Git is the actual software for version control. It can be downloaded from <https://git-scm.com/downloads>. For Windows users, if you have an older version of Git for Windows installed, please update to the latest version (or at least v2.29), as recent versions have Git Credential Manager built in. For Linux or Mac users, [install Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md) separately.
+2. **Install a GUI Client (Optional, as workshop will use CLI):** Git comes with a command line interface (CLI). You may prefer to work in a GUI client. There are many, and they are evolving rapidly, so they are not listed here. You may be interested in starting with GitHub Desktop.
     * GitHub Desktop
         * Windows/Mac: <https://desktop.github.com/>
         * Linux: <https://github.com/shiftkey/desktop>
     * List of GUI Clients: <https://git-scm.com/downloads/guis>
 3. **Create a GitHub Account:** <https://github.com/join>. Keep in mind that Git is the version control software, and GitHub is a hosted version of Git with some social networking capabilities. It is possible to run Git entirely locally, or to connect a Git server managed privately by your organization. GitHub ≠ Git!
-4. **Install a Diff Viewer (Optional):** A "diff" is a comparison of two files that shows differences between them. Git includes a basic CLI diff viewer, and many GUI Clients also include a diff viewer. Meld (<https://meldmerge.org/>) is a simple, lightweight diff viewer.
+4. **Set up 2FA:** GitHub now *requires* two-factor authentication to log in. Instructions on conifguring 2FA are available at <https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication>. You must set up 2FA either using an authenticator app (time-based one-time password app, or TOTP) or using text messaging. We will have to use an authenticator app when we get to the [Python Packaging workshop](/distributing_software/packaging.md) anyway, so I suggest doing that now. However, if you have any problems, just set up text based authentication for now.
+    1. Install an authenticator app if you don't already have one. I recommend 2FAS (<https://2fas.com/>) which, is PCMag's current top recommendation. If you would like to consider alternatives, look at the full list in ["The Best Authenticator Apps for 2024"](https://www.pcmag.com/picks/the-best-authenticator-apps).
+    2. [Follow GitHub's instructions to link the authenticator app to your account](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-totp-app). If for any reason this doesn't work for you, [configure 2FA using text messages](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-text-messages).
+    3. **Optionally, [configure 2FA with GitHub mobile](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-github-mobile)**. I find GitHub mobile to be a little easier to use than an authenticator app. It does require having set up an authenticator app or SMS beforehand, so you can't just jump to this step. After doing this, I also went to 2FA settings on GitHub and set GitHub Mobile as my preferred 2FA method.
+5. **Install a Diff Viewer (Optional):** A "diff" is a comparison of two files that shows differences between them. Git includes a basic CLI diff viewer, and many GUI Clients also include a diff viewer. Meld (<https://meldmerge.org/>) is a simple, lightweight diff viewer.
 
 # Working with Git
 
