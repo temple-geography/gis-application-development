@@ -10,7 +10,15 @@ The easiest way to get all packages necessary for these workshops is to download
 conda env create -f gus8066-environment.yml
 ```
 
-We will be using Visual Studio Code in this class. If you prefer working with Jupyter notebooks you can add `- jupyter` to the list of dependencies, or install it after creating the environment with `conda install jupyter`.
+I recommend setting the package channel to conda-forge as follows:
+
+```
+conda activate gus8066
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+```
+
+We will be using Visual Studio Code in this class. If you prefer working with Jupyter notebooks you can install it after creating the environment with `conda install jupyterlab notebook`.
 
 ## Schedule
 

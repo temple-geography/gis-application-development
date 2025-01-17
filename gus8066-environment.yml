@@ -14,7 +14,7 @@ dependencies:
   - flask # Web Applications and Dashboards
   - sphinx # Documentation
   - sphinx_rtd_theme # documentation
-  - pyqt==5 # GUI Design
+  - pyqt=5 # GUI Design
     # pyqt5 is current default, but big changes in pyqt6, 
     # so make sure doesn't accidentally increment
   - pyinstaller # Distributing Software - Freezing
