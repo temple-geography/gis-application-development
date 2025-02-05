@@ -97,7 +97,8 @@ t_list = repeat(sum_list, number = 1000, repeat = 5, globals=globals())
 print("numpy sums:", t_numpy)
 print("list sums:", t_list)
 
-print("numpy compared to lists:", f"{sum(t_numpy)/sum(t_list):.2%}")
+# Use min for comparison
+print("numpy compared to lists:", f"{min(t_numpy)/min(t_list):.2%}")
 
 
 #%% Python program for implementation of Bubble Sort 

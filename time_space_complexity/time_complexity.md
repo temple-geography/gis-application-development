@@ -3,13 +3,18 @@ title: Time Complexity
 author: Michael Ward, Lee Hachadoorian
 ---
 
-# Definitions: How to describe time complexity
+# Time Complexity
 
-$O$
-: Mathematial notation that describes the limiting behavior of a function as it approaches a particular value or infinity. In computer science, it is used to classify algorithms based on their runtime as the input size grows.
+## Activity
+
+Perform a [bubble sort](https://en.wikipedia.org/wiki/Bubble_sort) with a small number of randomly selected playing cards. Don't worry about order of matching ranks. That is, if you compare the J♠️ with the J♥️, don't change their order.
+
+## Big *O* Notation
+
+Big $O$ notation is used to categorize the time complexity of an algorithm. It is written as a function, where $n$ is the number of elements the algorithm operates on. Common complexities are listed here, in order from fastest to slowest.
 
 $O(1)$
-: An algorithm in which runtime is not affected by input size, referred to as constant time
+: An algorithm in which runtime is not affected by input size, referred to as constant time.
 
 $O(log{n})$
 : An algorithm in which runtime increase with the logarithm of input size.
@@ -17,11 +22,13 @@ $O(log{n})$
 $O(n)$
 : An algorithm in which runtime increases linearly with input size, referred to as linear time.
 
-$O(n*log{n})$
+$O(n log{n})$
 : An algorithm in which runtime increases as the product of input size and the log of input size.
 
 $O(n^2)$
-: An algorithm in which runtime increases exponentially with input size, referred to as quadratic time.
+: An algorithm in which runtime increases as the square of input size, referred to as quadratic time. It is also sometimes referred to as polynomial time, as the exponent can be a number other than $2$.
+
+Other complexities are possible. $O(n^2)$ is considered bad. Linear time ($O(n)$) or better is a good target, although  for many domains (e.g. sorting algorithms), $O(n log{n})$ is as good as it's going to get.
 
 There are other time complexities in computer science, but these are common.
 
