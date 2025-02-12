@@ -37,7 +37,7 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
         * :closed_book: [Agile epics: definition, examples, and templates](https://www.atlassian.com/agile/project-management/epics)
         * :closed_book: [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
         * :closed_book: [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
-    * :hammer_and_wrench: Workshop: Functions and Modules
+    * :hammer_and_wrench: [Workshop: Functions and Modules](functions_and_modules/functions_and_modules.md)
     * :rocket: Finalize project teams, begin creating epics and user stories
 * Week 3 - Classes and Object-Oriented Programming
     * Readings
