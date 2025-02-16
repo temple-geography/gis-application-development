@@ -56,7 +56,7 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
     * :rocket: Sprint 1
 * Week 6 - Testing
     * Readings
-        * :closed_book: ???
+        * :closed_book: [Effective Python Testing With pytest](https://realpython.com/pytest-python-testing/) - focus on "What Makes pytest So Useful?" and "Paremetrization: Combining Tests"
     * :hammer_and_wrench: Workshop: Python unittest
     * :rocket: Sprint 1 (cont.)
 * Week 7 - GUI Design
