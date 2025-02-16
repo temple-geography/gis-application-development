@@ -52,7 +52,7 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
 * Week 5 - Database Access
     * Readings
         * :closed_book: *WGPD* Ch 10 - Persistence is good: Databases
-    * :hammer_and_wrench: [Workshop: SQLAlchemy and Other Python Packages for Database Access](database_access/data_access.md)
+    * :hammer_and_wrench: [Workshop: SQLAlchemy and Other Python Packages for Database Access](database_access/intro_sqlalchemy.md)
     * :rocket: Sprint 1
 * Week 6 - Testing
     * Readings
