@@ -12,13 +12,13 @@ def test_perimeter(example_polygon):
     assert example_polygon.perimeter == 4.0
 
 def test_ipq(example_polygon):
-    # assert example_polygon.ipq == 0.7853981633974483
+    assert example_polygon.ipq == 0.7853981633974483
     
     ## What if there is a small floating point difference?
     # assert example_polygon.ipq == 0.785398163397448
     
     ## Use pytest.approx() for an approximate comparison
     ## https://docs.pytest.org/en/latest/reference/reference.html#pytest.approx
-    assert example_polygon.ipq == pytest.approx(0.785398163397448)
+    # assert example_polygon.ipq == pytest.approx(0.785398163397448)
         
 
