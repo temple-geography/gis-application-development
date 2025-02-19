@@ -12,4 +12,4 @@ The test files in this directory are prepended with `~` so that they are not dis
     3. Fix imports.
     4. Invoke with `python -m pytest`
 
-Paremtrization (not demonstrated): [With pytest, what's the benefit of using parameters instead of multiple assert statements for a test?](https://stackoverflow.com/questions/66481583/with-pytest-whats-the-benefit-of-using-parameters-instead-of-multiple-assert-s)
+Parametrization (not demonstrated): [With pytest, what's the benefit of using parameters instead of multiple assert statements for a test?](https://stackoverflow.com/questions/66481583/with-pytest-whats-the-benefit-of-using-parameters-instead-of-multiple-assert-s)
