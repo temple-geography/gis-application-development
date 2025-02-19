@@ -1,4 +1,4 @@
-from .shapes import Polygon
+from shapes import Polygon
 
 def test_area():
     example_polygon = Polygon([(0, 0), (1, 0), (1, 1), (0, 1), (0, 0)])
