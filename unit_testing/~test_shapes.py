@@ -1,5 +1,5 @@
 import pytest
-from shapes import Polygon
+from .shapes import Polygon
 
 @pytest.fixture
 def example_polygon():
