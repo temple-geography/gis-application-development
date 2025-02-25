@@ -66,7 +66,7 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
 * Week 8 - Web Applications and Dashboards
     * Readings
         * :closed_book: *WGPD* Ch 6 - Sharing with the internet
-        * :closed_book: *WGPD* Ch 8 - Do I know you? Authentication (**tentative**)
+        * :closed_book: *WGPD* Ch 7 - Doing it with style
     * :hammer_and_wrench: Workshop: Flask
     * :rocket: Sprint 2 (cont.)
 * Week 9 - Documentation
