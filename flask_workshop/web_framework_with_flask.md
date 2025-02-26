@@ -24,12 +24,12 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route("/")
 def hello():
-	return "Hello, World!"
+    return "Hello, World!"
 
-if __name__=='__main__'
-	app.run(debug = True)
+if __name__ == "__main__"
+    app.run(debug = True)
 ```
 
 We import the Flask module and instantiate the application.  Next, we use the `route()` decorator to tell Flask what URL should trigger our function. The function is given a name which is also used to generate URLs for that particular function and returns the message we want to display.  Lastly, running the app in debug mode allows us to easily see the changes we make without restarting the server.
@@ -37,7 +37,10 @@ We import the Flask module and instantiate the application.  Next, we use the `r
 After examining the `flask_hello.py` script file, open the Anaconda Prompt and activate a conda environment with Flask installed (such as our course environment). Navigate to the `flask_hello` folder. Load the web application with:
 
 ```sh
-python flask_hello.py
+flask --app flask_hello run
+
+# # Alternatively:
+# python flask_hello.py
 ```
 
 Note the messages in the terminal:
@@ -61,13 +64,13 @@ A list of the additional demo apps appears at the bottom of this document.
 The `route()` decorator is used to bind a function to a URL.
 
 ```python
-@app.route('/')
+@app.route("/")
 def hello():
-	return "Hello, World!"
+    return "Hello, World!"
 
 @app.route('/about')
 def about():
-	return 'the about page'
+    return "the about page"
 ```
 
 ## Templates
@@ -79,9 +82,9 @@ Note that this example does not exist in the workshop folder. You could create a
 ```python
 from flask import render_template
 
-@app.route('/hello')
+@app.route("/hello")
 def hello():
-    return render_template('hello.html')
+    return render_template("hello.html")
 ```
 
 Usually, however, we don't just stick static web pages in the template folder. The most powerful part of Jinja is template inheritance. This allows you to build a base template that contains all the common elements of your site and defines blocks that child templates can override. Jinja uses {% %} as notation.
@@ -210,8 +213,48 @@ In each case, navigate to the indicated folder and call `python script.py` at th
 
 -->
 
+## Some Notes
+
+Examples above and many examples online (including the Folium documentation, see below) put `app.run()` in the module as follows:
+
+```python
+if __name__ == "__main__":
+    app.run(debug = True)
+```
+
+Then the module is called with
+
+```sh
+python module_name.py
+```
+
+Our textbook (*WGPD*) and the [Flask Quickstart](https://flask.palletsprojects.com/en/stable/quickstart/) do *not* put `app.run()` in the module, and instead start Flask explicitly with:
+
+```sh
+flask --app module_name run
+```
+
+If the module is named `app.py`, the name can be omitted.
+
+The `FLASK_APP` name (the module) can also be set as an environment variable. The textbook shows setting this environment variable every time you run the app. Since we are running Flask in a conda environment, you can permanently set environment variables *for that specific conda environment*. To set the necessary variables for the textbook examples, you can run the following command in the conda environment where you are running flask:
+
+```sh
+conda env config vars set FLASK_ENV=development FLASK_APP=app.py
+```
+
+Then you can run Flask without having to specify the module:
+
+```sh
+flask run
+```
+
+The textbook *briefly* covers running Flask in a production environment using `gunicorn`. The Flask documentation goes into more detail with links to several options for deploying Flask to production web server, including options for cloud hosting: <https://flask.palletsprojects.com/en/stable/deploying/>.
+
+Since this is a GIS course, you may be interested in using Flask for web map deployment. The Folium documentation has an intro to [Using folium with flask](https://python-visualization.github.io/folium/latest/advanced_guide/flask.html).
+
+
 ## Documentation
 
-* [Flask documentation](https://flask.palletsprojects.com/en/1.1.x/)
+* [Flask documentation](https://flask.palletsprojects.com/en/stable/)
 * [Jinja2 documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/)
 * [Bootstrap](https://getbootstrap.com/)
