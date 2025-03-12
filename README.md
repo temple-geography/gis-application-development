@@ -58,7 +58,7 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
     * Readings
         * :closed_book: *WGPD* Section 12.1 - "Testing" (very short)
         * :closed_book: [Effective Python Testing With pytest](https://realpython.com/pytest-python-testing/) - focus on "What Makes pytest So Useful?" and "Paremetrization: Combining Tests"
-    * :hammer_and_wrench: Workshop: Python unittest
+    * :hammer_and_wrench: [Workshop: Unit testing with pytest](unit_testing/unit_testing_demo.md)
     * :rocket: Sprint 1 (cont.)
 * Week 7 - GUI Design
     * :hammer_and_wrench: [Workshop: PyQt and Qt Designer](gui_design/gui_design_workshop_notes.md)
