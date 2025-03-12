@@ -70,10 +70,10 @@ NumPy supports a total of 15 different sections *which will not all be covered h
 Some useful sections are:
 
 * **Extended Summary:** From the documentation, "This section should be used to clarify *functionality*, not to discuss implementation detail or background theory, which should rather be explored in the Notes section below."
-* **Other Parameters:** Use to document little-used parametrs only if the function has a large number of parameters.
+* **Other Parameters:** Use to document little-used parameters *only if the function has a large number of parameters*.
 * **Notes:** A more extensive discussion of the algorithm, implementation, etc.
 * **References:** You may be implementing an algorithm, method, calculated measure or index, etc., from an academic source. You can list such sources in the References section.
-* **Examples:** Examples of how your code would be used.
+* **Examples:** Code examples of typical use.
 
 If you are documenting a **class**, your class may have **attributes** and **methods**.
 
