@@ -36,11 +36,15 @@ The instructions for creating an account on the real Python Package Index at <ht
 
 ## Build Tool Installation
 
-Install Flit, a Python build tool, into a fresh conda environment. Flit does not have to be run in your development environment! Therefore, it will be easier to have Flit in its own environment, rather than install it into multiple project environments. The following command will create a conda environment named `flit`. I recommend not installing anything else into this environment.
+This workshop requires a Python environment with the Flit package installed. Flit is already available in your `gus8066` environment.
+
+If you are not taking this course and interested in following along, you *only* need Flit (and Python), not any other packages. I recommend creating a conda environment named `flit` without anything else in this environment.
 
 ```sh
 conda create -n flit python flit
 ```
+
+Incidentally, Flit does *not* have to be installed in your development environment. That is, you could create your project in the `my_project` environment, than do the packaging in the `flit` environment. The packages your package depends on only need to be in the `my_project` environment, not the `flit` environment.
 
 # Creating a Simple Project
 
@@ -142,7 +146,7 @@ On Windows, packaging took mere seconds (significantly faster than using the sta
 
 The workshop instructions primarily come from the [Flit documentation website](https://flit.pypa.io/en/latest/index.html).
 
-I started with the official [Python Packaging Tutorial](https://packaging.python.org/en/latest/tutorials/packaging-projects/). The tutorial uses `build` to build the wheel and `twine` to upload it to PyPI. The tutorial uses Hatchling by default as its build backend, but in April 2024 a recent bug (<https://github.com/pypa/hatch/issues/1329>) meant that Hatchling was generating builds that `twine` could not upload. The bug has been fixed, but at that point I started exploring Flit, and found that (a) it was simpler to use, and (b) it builds the packages a lot faster than `build`.
+I started with the official [Python Packaging Tutorial](https://packaging.python.org/en/latest/tutorials/packaging-projects/). The official tutorial uses `build` to build the wheel and `twine` to upload it to PyPI. It uses Hatchling by default as its build backend, but in April 2024 a recent bug (<https://github.com/pypa/hatch/issues/1329>) meant that Hatchling was generating builds that `twine` could not upload. The bug has been fixed, but at that point I started exploring Flit, and found that (a) it was simpler to use, and (b) it builds the packages a lot faster than `build`.
 
 Both the Python Packaging Tutorial and the Flit documentation are written (as of April 2024) as if you can still use password authentication to upload packages to PyPI. The instructions above on 2FA and creating API tokens is added so that an absolute beginner will have everything they need in one place.
 
