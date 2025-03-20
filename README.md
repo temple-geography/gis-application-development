@@ -72,7 +72,7 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
 * Week 9 - Documentation
     * Readings
         * :closed_book: Hillard 8?
-    * :hammer_and_wrench: Workshop: Using Sphinx for Python Documentation
+    * :hammer_and_wrench: [Workshop: Using Sphinx for Python Documentation](documentation/sphinx_getting_started.md)
     * :rocket: Sprint 3
 * Week 10 - Distributing Software
     * :hammer_and_wrench: [Workshop: Packaging in Python](distributing_software/packaging.md)
