@@ -59,7 +59,7 @@ class areal_weight:
 
     def arealweight(self, join):
         """
-        calculates areal weight.
+        Calculates areal weight.
         
         Parameters
         ----------
