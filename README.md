@@ -61,7 +61,7 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
     * :hammer_and_wrench: [Workshop: Unit testing with pytest](unit_testing/unit_testing_demo.md)
     * :rocket: Sprint 1 (cont.)
 * Week 7 - GUI Design
-    * :hammer_and_wrench: [Workshop: PyQt and Qt Designer](gui_design/gui_design_workshop_notes.md)
+    * :hammer_and_wrench: [Workshop: PyQt5 and Qt Designer](gui_design/gui_design.md)
     * :rocket: Sprint 2
 * Week 8 - Web Applications and Dashboards
     * Readings
