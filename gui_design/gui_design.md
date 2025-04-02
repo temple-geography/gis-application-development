@@ -1,6 +1,6 @@
 ---
 title: Getting Started with PyQt5 and Qt Designer
-author: Michael Ward
+author: Lee Hachadoorian
 ---
 
 # Preparation
