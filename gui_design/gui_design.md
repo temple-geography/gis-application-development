@@ -13,7 +13,7 @@ This tutorial also requires PyQt5, which is already installed in the `gus8066` c
 conda install pyqt=5
 ```
 
-Note that as of Spring 2025, PyQt5 is the default version of PyQt, even though PyQt6 is available. However, there are breaking changes in PyQt6, so we are specifically requesting version 5.
+Note that as of Spring 2025, PyQt5 is the default version of PyQt in conda, even though PyQt6 is available. However, there are breaking changes in PyQt6, so we are specifically requesting version 5.
 
 # Creating GUIs with PyQT5 and Qt Designer
 
@@ -185,7 +185,7 @@ python main1.py
 
 Type into the line edit and see what happens. Hit the Clear Text button and see what happens. These actions are the result of the signals and slots that we set up in Qt Designer.
 
-> **NOTE:** There is another import the UI into your main module. The UI file can be imported directly using `PyQt5.uic.loadUi("file.ui")`. However, using `pyuic5` to convert the UI file to a Python file appears to be more common among Python developers. Be aware of the difference if you see code online that uses `loadUi()`. This is a design choice, and you may work with a developer group that approaches this differently.
+> **NOTE:** There is another way to import the UI into your main module. The UI file can be imported directly using `PyQt5.uic.loadUi("file.ui")`. However, using `pyuic5` to convert the UI file to a Python file appears to be more common among Python developers. Be aware of the difference if you see code online that uses `loadUi()`. This is a design choice, and you may work with a developer group that approaches this differently.
 
 ## A GUI Application with More Complex Signals and Slots
 
@@ -219,7 +219,7 @@ Convert the UI file to a Python module with `pyuic5`:
 pyuic5 mainwindow2.ui -o mainwindow2.py
 ```
 
-We're first going to see how to create a slot that will call the QFileDialog. Duplicate `main1.py` as `main2.py`. Then edit it as follows:
+We're first going to see how to create a slot that will call the QFileDialog. Duplicate `main1.py` as `main2.py`. Then edit it as follows.
 
 Change the import to `mainwindow2`. Note that the UI class is still named `Ui_MainWindow`, so we just need to change the module name, not the class:
 
@@ -227,7 +227,7 @@ Change the import to `mainwindow2`. Note that the UI class is still named `Ui_Ma
 from mainwindow2 import Ui_MainWindow
 ```
 
-We will set it up so that the tool buttons open the native file browser. To do so, we need to add signals to the button click events, and we create custom slights that (a) open the file browser, and (b) save whatever the user puts in the file browser to the associated line edit.
+We will set up the UI so that the tool buttons open the native file browser. To do so, we need to add signals to the button click events, and we create custom slots that (a) open the file browser, and (b) save whatever the user puts in the file browser to the associated line edit.
 
 The file browser is lauched with two methods, `getOpenFileName()` and `getSaveFileName()`. Both of them take the following parameters:
 
@@ -306,7 +306,7 @@ Did it work? If not, review your code and make sure everything is in the right p
 
 ## Possible Improvements
 
-We haven't introduced some important features of UI design. Let's consider the CRS.
+This workshop has barely scratched the surface of UI design, but now that you know the basics, you should be well-positioned to learn more on your own. Here are some basic modifications to the reprojection UI that illustrate common features UI design:
 
 1. If the user inputs a nonumeric value or a nonexistent EPSG code, the application crashes. We would want to add error handling to display a message to the user but keep the application running.
 2. Since the application as currently written can only accept numeric EPSG codes, we could add an **input mask** to the line edit widget that would prevent users from typing anything other than the digits 0-9.
@@ -318,6 +318,6 @@ You may have other ideas. Play around and see what you come up with.
 
 # References
 
-Qt is a massive project. Although I usually emphasize referring to official documentation, I think it is very hard to know where to start with official Qt. For this workshop, I relied heavily on the [PyQt5 tutorials at PythonGUIs](https://www.pythonguis.com/pyqt5/). The author covers PyQt and QtDesigner. He covers related frameworks like PyQt6 and PySide, as well Python's default GUI framework, Tkinter.
+Qt is a massive project. Although I usually emphasize consulting official documentation, I think it is very hard to know where to start with official Qt. For this workshop, I relied heavily on the [PyQt5 tutorials at PythonGUIs](https://www.pythonguis.com/pyqt5/). The author covers PyQt and QtDesigner. He also covers related frameworks like PyQt6 and PySide, as well Python's default GUI framework, Tkinter.
 
 The idea of using Qt Designer to create a reprojection widget is based on a tutorial developed in Spring 2021 by my student Michael Ward.
