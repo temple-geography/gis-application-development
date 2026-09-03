@@ -44,10 +44,11 @@ In this course, we will be using VS Code, which comes with a simple git GUI, inc
 **Install a GUI Client (Optional, as workshop will use CLI)**
 
 Git comes with a command line interface (CLI). You may prefer to work in a GUI client. There are many, and they are evolving rapidly, so they are not listed here. You may be interested in starting with GitHub Desktop.
-    * GitHub Desktop
-        * Windows/Mac: <https://desktop.github.com/>
-        * Linux: <https://github.com/shiftkey/desktop>
-    * List of GUI Clients: <https://git-scm.com/downloads/guis>
+
+* GitHub Desktop
+    * Windows/Mac: <https://desktop.github.com/>
+    * Linux: <https://github.com/shiftkey/desktop>
+* List of GUI Clients: <https://git-scm.com/downloads/guis>
 
 **Install a Diff Viewer (Optional):** A "diff" is a comparison of two files that shows differences between them. Git includes a basic CLI diff viewer, and many GUI Clients also include a diff viewer. Meld (<https://meldmerge.org/>) is a simple, lightweight diff viewer.
 
