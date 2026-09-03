@@ -20,17 +20,36 @@ Master Branch
 # Preparation
 
 1. **Install Git:** Git is the actual software for version control. It can be downloaded from <https://git-scm.com/downloads>. For Windows users, if you have an older version of Git for Windows installed, please update to the latest version (or at least v2.29), as recent versions have Git Credential Manager built in. For Linux or Mac users, [install Git Credential Manager](https://github.com/git-ecosystem/git-credential-manager/blob/release/docs/install.md) separately.
-2. **Install a GUI Client (Optional, as workshop will use CLI):** Git comes with a command line interface (CLI). You may prefer to work in a GUI client. There are many, and they are evolving rapidly, so they are not listed here. You may be interested in starting with GitHub Desktop.
+2. **Create a GitHub Account:** <https://github.com/join>. Keep in mind that Git is the version control software, and GitHub is a hosted version of Git with some social networking capabilities. It is possible to run Git entirely locally, or to connect a Git server managed privately by your organization. GitHub ≠ Git!
+3. **Set up 2FA:** GitHub now *requires* two-factor authentication to log in. Instructions on conifguring 2FA are available at <https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication>. You must set up 2FA either using an authenticator app (time-based one-time password app, or TOTP) or using text messaging. We will have to use an authenticator app when we get to the [Python Packaging workshop](/distributing_software/packaging.md) anyway, so I suggest doing that now. However, if you have any problems, just set up text based authentication for now.
+    1. Install an authenticator app if you don't already have one. I recommend 2FAS (<https://2fas.com/>) which, is PCMag's current top recommendation. If you would like to consider alternatives, look at the full list in ["The Best Authenticator Apps for 2024"](https://www.pcmag.com/picks/the-best-authenticator-apps).
+    2. [Follow GitHub's instructions to link the authenticator app to your account](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-totp-app). If for any reason this doesn't work for you, [configure 2FA using text messages](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-text-messages).
+    3. **Optionally, [configure 2FA with GitHub mobile](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-github-mobile)**. I find GitHub mobile to be a little easier to use than an authenticator app. It does require having set up an authenticator app or SMS beforehand, so you can't just jump to this step. After doing this, I also went to 2FA settings on GitHub and set GitHub Mobile as my preferred 2FA method.
+4. **Add an SSH key to your GitHub account:** Working with SSH remotes requires creating an SSH key locally, then adding the SSH key to GitHub in the web interface.
+    1. First, check that you don't already have an SSH key locally. *You probably don't.* Keys are stored in a hidden `.ssh` directory in the users home folder. Look in this directory (you may have to turn on hidden file viewing) for a file named `id_ed25519.pub`. You can also do this at the command line using `ls ~/.ssh`. If this file is present, skip the next step.
+    2. At the command line run the following command using the email associated with your GitHub account.
+        
+        ```
+        ssh-keygen -t ed25519 -C "your_email@example.com"
+        ```
+        
+        Hit Enter to accept the default filename. If your computer is reasonably secure, you can create the key without a passphrase (just leave blank when prompted for the passphrase). If you are uncomfortable with this, you can follow instructions for working with SSH key passphrases at https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases.
+    3. Open `id_ed25519.pub` in a text editor and copy the contents.
+    4. ollowing the instructions for "Adding a new SSH key to your account" *beginning with Step 2* at https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account. You have to name the SSH key. Since you should keep a distinct key on each computer you are using, I recommend 
+
+## Optional Additional Preparation
+
+In this course, we will be using VS Code, which comes with a simple git GUI, including a diff viewer. If you are not using VS Code, your IDE may also include a git GUI. If not, you may optionally do the following.
+
+**Install a GUI Client (Optional, as workshop will use CLI)**
+
+Git comes with a command line interface (CLI). You may prefer to work in a GUI client. There are many, and they are evolving rapidly, so they are not listed here. You may be interested in starting with GitHub Desktop.
     * GitHub Desktop
         * Windows/Mac: <https://desktop.github.com/>
         * Linux: <https://github.com/shiftkey/desktop>
     * List of GUI Clients: <https://git-scm.com/downloads/guis>
-3. **Create a GitHub Account:** <https://github.com/join>. Keep in mind that Git is the version control software, and GitHub is a hosted version of Git with some social networking capabilities. It is possible to run Git entirely locally, or to connect a Git server managed privately by your organization. GitHub ≠ Git!
-4. **Set up 2FA:** GitHub now *requires* two-factor authentication to log in. Instructions on conifguring 2FA are available at <https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication>. You must set up 2FA either using an authenticator app (time-based one-time password app, or TOTP) or using text messaging. We will have to use an authenticator app when we get to the [Python Packaging workshop](/distributing_software/packaging.md) anyway, so I suggest doing that now. However, if you have any problems, just set up text based authentication for now.
-    1. Install an authenticator app if you don't already have one. I recommend 2FAS (<https://2fas.com/>) which, is PCMag's current top recommendation. If you would like to consider alternatives, look at the full list in ["The Best Authenticator Apps for 2024"](https://www.pcmag.com/picks/the-best-authenticator-apps).
-    2. [Follow GitHub's instructions to link the authenticator app to your account](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-a-totp-app). If for any reason this doesn't work for you, [configure 2FA using text messages](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-text-messages).
-    3. **Optionally, [configure 2FA with GitHub mobile](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication#configuring-two-factor-authentication-using-github-mobile)**. I find GitHub mobile to be a little easier to use than an authenticator app. It does require having set up an authenticator app or SMS beforehand, so you can't just jump to this step. After doing this, I also went to 2FA settings on GitHub and set GitHub Mobile as my preferred 2FA method.
-5. **Install a Diff Viewer (Optional):** A "diff" is a comparison of two files that shows differences between them. Git includes a basic CLI diff viewer, and many GUI Clients also include a diff viewer. Meld (<https://meldmerge.org/>) is a simple, lightweight diff viewer.
+
+**Install a Diff Viewer (Optional):** A "diff" is a comparison of two files that shows differences between them. Git includes a basic CLI diff viewer, and many GUI Clients also include a diff viewer. Meld (<https://meldmerge.org/>) is a simple, lightweight diff viewer.
 
 # Working with Git
 
@@ -75,11 +94,17 @@ For this workshop, you will clone the `temple-geography/git-practice` repo. If y
 
 To clone the repo, navigate in the terminal to the *parent* folder on your computer. The repo will be copied locally to a *subfolder*. The parent folder could be a folder where you keep all of your work for this course. The repo will be in the course folder, but not all of your coursework will be in the repo subfolder. Additionally, you can have more than one repo in the same parent folder. Later you will create another repo for the term project.
 
-Run `git clone` with GitHub URL of the repo:
+Run `git clone` with SSH URL of the repo:
 
 ```
-git clone https://github.com/temple-geography/git-practice
+git clone git@github.com:temple-geography/git-practice.git
 ```
+
+> **NOTE:** Although GitHub still gives you the option of cloning using HTTPS, GitHub has removed password-based authentication. You can use an HTTPS remote with GitHub Credential Manager, but I don't see any reason why that would be preferable to SSH. If you followed the preparation instructions above, you should have an SSH key on your local computer that will allow you to push to an SSH remote.
+> 
+> If you previously cloned using HTTPS, you can convert the remote to SSH with the following command (change for a repo other than the `git-practice` repo):
+>
+> `git remote set-url origin git@github.com:temple-geography/git-practice.git`
 
 `cd` into the new subfolder and view the local files with `ls` (Mac/Linix or Windows PowerShell) or `dir` (Windows Command Prompt). You can also view the new folder and its contents in a file browser. Note that the README has been copied to your local repo.
 
@@ -153,14 +178,13 @@ If you do want to abandon the changes before a commit, this can be easily accomp
 
 ```
 # Abandon changes to a single tracked file
-git reset <filename>
+git restore <filename>
 
 # Abandon all changes
-git reset
+git restore .
 ```
 
-This suggests another way to think about *when* to commit. Commits create **checkpoints**, a point in the development to which you might want to return. Again, you may not have completed a feature, but if you have made significant progress, the code is in a working state, and you might want to return to this point in the event further development introduces serious problems, commiting lets you revert your work to this checkpoint using `git reset`.
-
+This suggests another way to think about *when* to commit. Commits create **checkpoints**, a point in the development to which you might want to return. Again, you may not have completed a feature, but if you have made significant progress, the code is in a working state, and you might want to return to this point in the event further development introduces serious problems, commiting lets you revert your work to this checkpoint using `git restore`.
 
 > **Renaming or moving files:** If you rename or move a file on the hard drive, Git will treat this as a file being deleted and a new file being added. Use the command `git mv <old_filename> <new_filename>` so that Git will know that the moved or renamed file is the same file!
 
@@ -219,7 +243,7 @@ In demoing the above, I will have created a new file, edited, and added it to th
 
 Once pushed, you can go to GitHub and you will see the new branch. In order to merge this branch, you will create a **pull request** (PR). When you create a PR, the **base** branch is the one you want to merge your work into (often `main`). The **compare** branch is the one with the new work.
 
-When creating a PR, you may change the message so that it makes sense within the broader project (i.e., don't have to keep the commit message), and you should add a detailed comment. Do not merge your own PRs! PRs should be reviewed by at least one other developer on your team.
+When creating a PR, you may change the message so that it makes sense within the broader project (that is, you don't have to keep the commit message), and you should add a detailed comment. Do not merge your own PRs! PRs should be reviewed by at least one other developer on your team.
 
 Pair up with another student and practice working on pull requests. 
 
@@ -246,7 +270,7 @@ Sometimes those changes may still conflict with each other. If you are working o
 Continue working with the student you partnered with in the last step. For this example, I am going to assume we have two students named Legolas and Gimli. Assume that both of you are adding features to Legolas's branch, which is named `feature-legolas`.
 
 1. Gimli should pull and checkout `feature-legolas` with tracking, as demonstrated above.
-2. Gimli should branch off of `feature-legolas`. The branch can be named anything, e.g. `feature-legolas-gimli` or `feature-legolas-mod`. Make changes to the beginning of the file and at multiple places throughout. Remember, we are *trying* to create conflicts that can't be easily resolved.
+2. Gimli should branch off of `feature-legolas`. The branch can be named anything, e.g. `feature-legolas-mod`. Make changes to the beginning of the file and at multiple places throughout. Remember, we are *trying* to create conflicts that can't be easily resolved.
 3. Legolas should make changes directly to `feature-legolas`. That is, don't branch first (which is what we normally *should* do). We are *trying* to create conflicts. Make changes to the beginning of the file and at multiple places throughout. Legolas should push their branch to GitHub.
 4. Gimli should now push their feature branch to GitHub. Then, create a PR trying to merge this branch into `feature-legolas`. Tag Legolas as the reviewer.
 5. Legolas should review the PR. GitHub will let you know there are merge conflicts. You can examine the conflicts using GitHub's web editor. It will show you the file with *both* contributors' changes highlighted in various places. Legolas can edit the file directly here, choosing which changes to keep, or creating something completely new. When he is done, he can select "Mark as resolved", then confirm the pull request.
@@ -264,7 +288,9 @@ Since Git preserves all file history, if you once had a large data file in your 
 
 You can work with a git repo on multiple computers using a file sync service such as Dropbox. All the repo files will sync as normal, but the repo status and branches will sync as well. All of this info is stored internally in a hidden folder named `.git`, so as long as your syncing service doesn't exclude hidden files (which might be a user-configurable setting) all info about the repo will sync as well. There's no need to `git push` the repo from your desktop so that you can `git pull` on your laptop to work with it later.
 
+# Adding SSH keys
 
+I gave very abbreviated instructions earlier for adding an SSH to your GitHub account. More detailed instructions are available at
 
 
 
