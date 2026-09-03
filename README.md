@@ -38,14 +38,12 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
         * :closed_book: [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
     * :hammer_and_wrench: [Workshop: Functions and Modules](functions_and_modules/functions_and_modules.md)
     * :rocket: Finalize project teams
-* Week 3 - Classes and Object-Oriented Programming
+* Week 3 - Programming with LLMs
+    * :hammer_and_wrench: Workshop: Claude Code
+    * :rocket: Sprint 0 opens - Create epics and user stories
+* Week 4 - Classes and Object-Oriented Programming
     * Readings
         * :closed_book: *WGPD* Ch 4 - The object of conversation
-    * :hammer_and_wrench: Workshop: Application Development with Claude Code
-    * :rocket: Sprint 0 opens - Create epics and user stories
-* Week 4 - Time Complexity
-    * Readings
-        * :closed_book: TBD
     * :hammer_and_wrench: [Workshop: Creating Classes in Python](classes_and_oop/creating_classes_in_python.md)
     * :rocket: Sprint 0 - User story review and feedback
 * Week 5 - Testing
@@ -55,31 +53,31 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
     * :hammer_and_wrench: [Workshop: Unit testing with pytest](unit_testing/unit_testing_demo.md)
     * :rocket: Sprint 0 - Finalize user stories
     * :rocket: Sprint 1 opens
-* Week 6 - Database Access
-    * Readings
-        * :closed_book: *WGPD* Ch 10 - Persistence is good: Databases
+* Week 6 - Time Complexity
     * :hammer_and_wrench: [Workshop: Timing and CPU Profiling](time_space_complexity/time_complexity.md)
     * :rocket: Sprint 1 code review
-* Week 7 - GUI Design
+* Week 7 - Database Access
+    * Readings
+        * :closed_book: *WGPD* Ch 10 - Persistence is good: Databases
     * :hammer_and_wrench: [Workshop: Introduction to SQLAlchemy](database_access/intro_sqlalchemy.md)
     * :rocket: Sprint 1 PRs due
     * :rocket: Sprint 2 opens
-* Week 8 - Web Applications and Dashboards
+* Week 8 - GUI Design
+    * :hammer_and_wrench: [Workshop: PyQt5 and Qt Designer](gui_design/gui_design.md)
+    * :rocket: Sprint 2 code review
+* Week 9 - Web Applications and Dashboards
     * Readings
         * :closed_book: *WGPD* Ch 6 - Sharing with the internet
         * :closed_book: *WGPD* Ch 7 - Doing it with style
-    * :hammer_and_wrench: [Workshop: PyQt5 and Qt Designer](gui_design/gui_design.md)
-    * :rocket: Sprint 2 code review
-* Week 9 - Documentation
-    * Readings
-        * :closed_book: Hillard 8?
     * :hammer_and_wrench: [Workshop: Flask](flask_workshop/web_framework_with_flask.md)
     * :rocket: Sprint 2 PRs due
     * :rocket: Sprint 3 opens
-* Week 10 - Distributing Software
+* Week 10 - Documentation
+    * Readings
+        * :closed_book: "Authoring and maintaining documentation", Hillard Ch 8, provided by professor
     * :hammer_and_wrench: [Workshop: Using Sphinx for Python Documentation](documentation/sphinx_getting_started.md)
     * :rocket: Sprint 3 code review
-* Week 11 - Term Project
+* Week 11 - Distributing Software
     * :hammer_and_wrench: [Workshop: Packaging in Python](distributing_software/packaging.md)
     * :hammer_and_wrench: [Workshop: Freezing an Application with PyInstaller](distributing_software/freezing.md)
     * :rocket: Sprint 3 PRs due
