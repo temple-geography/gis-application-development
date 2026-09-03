@@ -32,10 +32,10 @@ Master Branch
         ```
         ssh-keygen -t ed25519 -C "your_email@example.com"
         ```
-        
+
         Hit Enter to accept the default filename. If your computer is reasonably secure, you can create the key without a passphrase (just leave blank when prompted for the passphrase). If you are uncomfortable with this, you can follow instructions for working with SSH key passphrases at https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/working-with-ssh-key-passphrases.
     3. Open `id_ed25519.pub` in a text editor and copy the contents.
-    4. ollowing the instructions for "Adding a new SSH key to your account" *beginning with Step 2* at https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account. You have to name the SSH key. Since you should keep a distinct key on each computer you are using, I recommend 
+    4. Follow the instructions for "Adding a new SSH key to your account" *beginning with Step 2* at https://docs.github.com/en/enterprise-cloud@latest/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account. You have to name the SSH key. Since you should keep a distinct key on each computer you are using, I recommend 
 
 ## Optional Additional Preparation
 
