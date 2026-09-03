@@ -10,10 +10,9 @@ The easiest way to get all packages necessary for these workshops is to download
 conda env create -f gus8066-environment.yml
 ```
 
-I recommend setting the package channel to conda-forge as follows:
+I recommend setting the package channel to conda-forge for all repos, including future repos, with:
 
 ```
-conda activate gus8066
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
@@ -38,51 +37,62 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
         * :closed_book: [User stories with examples and a template](https://www.atlassian.com/agile/project-management/user-stories)
         * :closed_book: [Story points and estimation](https://www.atlassian.com/agile/project-management/estimation)
     * :hammer_and_wrench: [Workshop: Functions and Modules](functions_and_modules/functions_and_modules.md)
-    * :rocket: Finalize project teams, begin creating epics and user stories
+    * :rocket: Finalize project teams
 * Week 3 - Classes and Object-Oriented Programming
     * Readings
         * :closed_book: *WGPD* Ch 4 - The object of conversation
-    * :hammer_and_wrench: [Workshop: Creating Classes in Python](classes_and_oop/creating_classes_in_python.md)
-    * :rocket: Sprint 0 - Create epics and user stories
+    * :hammer_and_wrench: Workshop: Application Development with Claude Code
+    * :rocket: Sprint 0 opens - Create epics and user stories
 * Week 4 - Time Complexity
     * Readings
-        * :closed_book: ???
-    * :hammer_and_wrench: [Workshop: Timing and CPU Profiling](time_space_complexity/time_complexity.md)
-    * :rocket: Sprint 0 (cont.) - Finish epics and user stories, populate epic backlog
-* Week 5 - Database Access
-    * Readings
-        * :closed_book: *WGPD* Ch 10 - Persistence is good: Databases
-    * :hammer_and_wrench: [Workshop: SQLAlchemy and Other Python Packages for Database Access](database_access/intro_sqlalchemy.md)
-    * :rocket: Sprint 1
-* Week 6 - Testing
+        * :closed_book: TBD
+    * :hammer_and_wrench: [Workshop: Creating Classes in Python](classes_and_oop/creating_classes_in_python.md)
+    * :rocket: Sprint 0 - User story review and feedback
+* Week 5 - Testing
     * Readings
         * :closed_book: *WGPD* Section 12.1 - "Testing" (very short)
         * :closed_book: [Effective Python Testing With pytest](https://realpython.com/pytest-python-testing/) - focus on "What Makes pytest So Useful?" and "Paremetrization: Combining Tests"
     * :hammer_and_wrench: [Workshop: Unit testing with pytest](unit_testing/unit_testing_demo.md)
-    * :rocket: Sprint 1 (cont.)
+    * :rocket: Sprint 0 - Finalize user stories
+    * :rocket: Sprint 1 opens
+* Week 6 - Database Access
+    * Readings
+        * :closed_book: *WGPD* Ch 10 - Persistence is good: Databases
+    * :hammer_and_wrench: [Workshop: Timing and CPU Profiling](time_space_complexity/time_complexity.md)
+    * :rocket: Sprint 1 code review
 * Week 7 - GUI Design
-    * :hammer_and_wrench: [Workshop: PyQt5 and Qt Designer](gui_design/gui_design.md)
-    * :rocket: Sprint 2
+    * :hammer_and_wrench: [Workshop: Introduction to SQLAlchemy](database_access/intro_sqlalchemy.md)
+    * :rocket: Sprint 1 PRs due
+    * :rocket: Sprint 2 opens
 * Week 8 - Web Applications and Dashboards
     * Readings
         * :closed_book: *WGPD* Ch 6 - Sharing with the internet
         * :closed_book: *WGPD* Ch 7 - Doing it with style
-    * :hammer_and_wrench: Workshop: Flask
-    * :rocket: Sprint 2 (cont.)
+    * :hammer_and_wrench: [Workshop: PyQt5 and Qt Designer](gui_design/gui_design.md)
+    * :rocket: Sprint 2 code review
 * Week 9 - Documentation
     * Readings
         * :closed_book: Hillard 8?
-    * :hammer_and_wrench: [Workshop: Using Sphinx for Python Documentation](documentation/sphinx_getting_started.md)
-    * :rocket: Sprint 3
+    * :hammer_and_wrench: [Workshop: Flask](flask_workshop/web_framework_with_flask.md)
+    * :rocket: Sprint 2 PRs due
+    * :rocket: Sprint 3 opens
 * Week 10 - Distributing Software
+    * :hammer_and_wrench: [Workshop: Using Sphinx for Python Documentation](documentation/sphinx_getting_started.md)
+    * :rocket: Sprint 3 code review
+* Week 11 - Term Project
     * :hammer_and_wrench: [Workshop: Packaging in Python](distributing_software/packaging.md)
     * :hammer_and_wrench: [Workshop: Freezing an Application with PyInstaller](distributing_software/freezing.md)
-    * :rocket: Sprint 3 (cont.)
-* Weeks 11-12 - Term Project
-    * :rocket: Sprint 4
-* Weeks 13-14 - Term Project
-    * :rocket: Freezing/Packaging & Documentation
-
-
+    * :rocket: Sprint 3 PRs due
+    * :rocket: Sprint 4 opens
+* Week 12 - Term Project
+    * :rocket: Sprint 4 code review
+* Week 13 - Term Project
+    * :rocket: Sprint 4 PRs due
+    * :rocket: Project packaging and documentation begins
+* Week 14 - Term Project
+    * :rocket: Product demos
+    * :rocket: Documentation review and feedback (time permitting)
+* Finals Period
+    * :rocket: Documentation due
 
 
