@@ -39,7 +39,7 @@ We will be using Visual Studio Code in this class. If you prefer working with Ju
     * :hammer_and_wrench: [Workshop: Functions and Modules](functions_and_modules/functions_and_modules.md)
     * :rocket: Finalize project teams
 * Week 3 - Programming with LLMs
-    * :hammer_and_wrench: Workshop: Claude Code
+    * :hammer_and_wrench: Workshop: [Claude Code](programming_with_ai/claude_code.md)
     * :rocket: Sprint 0 opens - Create epics and user stories
 * Week 4 - Classes and Object-Oriented Programming
     * Readings
