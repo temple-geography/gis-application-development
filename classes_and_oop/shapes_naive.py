@@ -49,8 +49,3 @@ class Polygon:
     @property
     def perimeter(self):
         return self._perimeter
-           
-if __name__ == "__main__":
-    
-    poly = Polygon([(0, 0), (1, 0), (1, 1), (0, 1), (0, 0)])
-
