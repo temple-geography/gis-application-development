@@ -1,7 +1,6 @@
 
 from math import sqrt
 
-#%%
 # Second attempt
 class Polygon:
     
@@ -10,7 +9,6 @@ class Polygon:
         self.area = area
         self.perimeter = perimeter
 
-#%%
 # Third attempt with derived attributes
 class Polygon:
     
@@ -28,7 +26,6 @@ class Polygon:
         self.perimeter = perim
         
         
-#%%
 # Fourth attempt with private attributes
 class Polygon:
     
