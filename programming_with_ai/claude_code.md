@@ -10,6 +10,8 @@ The project directory should have an `AGENTS.md` or `CLAUDE.md` file. Note that 
 2. Document standards appropriate to the project level. This can include coding conventions, or they can be included in lower-level files, particularly if multiple languages are used for a large project.
 3. The entire file is parsed when the Claude session starts. This uses tokens but can also blow your context window. Files of more than 100 or 200 lines will not stay in context.
 
+An intro to working with `CLAUDE.md` or `AGENTS.md` and what should go into it can be found at <https://www.aihero.dev/a-complete-guide-to-agents-md>.
+
 # Work in Sessions
 
 Go to the project folder and enter:
