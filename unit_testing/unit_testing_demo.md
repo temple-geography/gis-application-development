@@ -7,7 +7,7 @@ The test files in this directory are prepended with `~` so that they are not dis
 5. Demo `test_shapes0.py`.
 6. Show fixtures in `test_shapes.py`. Note that fixtures can be put in separate files for use in other tests.
 7. Moving tests to their own directory:
-    1. Move `is_palindrome.py` to `tests` directory.
+    1. Move `test_is_palindrome.py` to `tests` directory.
     2. Create empty `__init__.py`.
     3. Fix imports.
     4. Invoke with `python -m pytest`
