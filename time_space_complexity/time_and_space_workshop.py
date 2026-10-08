@@ -1,10 +1,9 @@
-#%%
 import numpy as np 
 from timeit import timeit
 from timeit import repeat
 import random 
 
-#%% Test the speed of Numpy vs. Lists"
+# Test the speed of Numpy vs. Lists"
 import numpy as np
    
 n_elements = 10000
@@ -25,7 +24,7 @@ print("list sums:", t_list)
 
 print("numpy compared to lists:", f"{t_numpy/t_list:.2%}")
 
-#%% Code can also be passed in as strings
+# Code can also be passed in as strings
 #   In this case, necessary imports must be included in setup code
 
 sum_numpy = """
@@ -49,7 +48,7 @@ print("list sums:", t_list)
 
 print("numpy compared to lists:", f"{t_numpy/t_list:.2%}")
 
-#%% Alternatively, give access to the globals namespace, which includes
+# Alternatively, give access to the globals namespace, which includes
 #   imported modules.
 import numpy as np
    
@@ -71,7 +70,7 @@ print("list sums:", t_list)
 
 print("numpy compared to lists:", f"{t_numpy/t_list:.2%}")
 
-#%% You will get more stable estimates using the repeat method of the timeit
+# You will get more stable estimates using the repeat method of the timeit
 #   module. This does *not* repeat setup code, if any
 
 import numpy as np
@@ -101,7 +100,7 @@ print("list sums:", t_list)
 print("numpy compared to lists:", f"{min(t_numpy)/min(t_list):.2%}")
 
 
-#%% Python program for implementation of Bubble Sort 
+# Python program for implementation of Bubble Sort 
 
 import random
 
@@ -139,7 +138,7 @@ print(timeit(test_code1, globals=globals()))
 #print(repeat(stmt = test_code2, setup = setup_code2, number = 1000, repeat= 5))  
 print(repeat(test_code2, number = 1000, repeat=5, globals=globals()))   
 
-#%%Bubble sort-- optimized form
+#Bubble sort-- optimized form
 
 import random
 
@@ -203,7 +202,7 @@ print("Optimized bubblesort:", t_bubble_sort_optim)
 
 print("Basic bubblesort compared to optimized bubblesort:", f"{t_bubble_sort/t_bubble_sort_optim:.2%}")
 
-#%%bubble sort w/out loop
+#bubble sort w/out loop
  
 # Function to implement bubble
 # sort without using loops
@@ -254,7 +253,7 @@ rand_arr= random.sample(range(1000), 100)
 print(timeit.timeit(stmt= test_code1, setup= setup_code1, number= 1000))
 print(timeit.repeat(stmt= test_code2, setup= setup_code2, number= 10000, repeat=5))
 
-#%% selection sort= achieves the same result in a different way
+# selection sort= achieves the same result in a different way
 import random
 
 def selection_sort(arr, n):
@@ -286,7 +285,7 @@ n=len(rand_arr)
 '''
 #Task: Construct your timeit and timeit.repeat statements with the above code input
     
-#%% QUICKSORT ~ partition-exchange sort = in-place sorting algorithm
+# QUICKSORT ~ partition-exchange sort = in-place sorting algorithm
 #partitions the array around a pivot element>> sub-arrays, 
 #partition sorted recursively<<requires less memory
 #takes O(nlogn) comparisons for n items
