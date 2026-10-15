@@ -20,7 +20,7 @@ This is an advantage of using SQLAlchemy Core. For some developers, there is als
 
 Using an ORM requires additional effort, and not all developers think that this effort pays off. There are also concerns about SQLAlchemy ORM performance, although this could be addressed by either more careful construction of the code that uses the ORM, or using a different ORM than SQLAlchemy. For this course, our purpose is to learn the basics of interacting with a database using Python. I have chosen SQLAlchemy because it is perhaps the most widely known SQL package for Python. If you are steeped in the object-oriented programming paradigm, ORM may come naturally to you, and you may want to skip Core, but the SQLAlchemy docs make clear that understanding ORM is built on Core, and recommend learning Core first. This workshop will stick to SQLAlchemy Core.
 
-One other thing to clarify. You will find things on the internet that demonstrate Core by sending fully formed SQL statements to the database, and suggest both that this is Core's primary use case, and that you need to use ORM to avoid writing SQL. This is wrong, or perhaps just poorly stated. Core allows you to work with Python objects to specify what you want to do, and will build the SQL for you. In fact, as I mentioned above, the entire purpose of using a package like SQLAlchemy is to interact with the database in a database-agnostic way, and Core does that. If you are writing the SQL yourself, you have to spend time making sure that you are constructing the SQL itself in a database-agnostic way. If you use SQLAlchemy (Core *or* ORM), SQLAlchemy will build the SQL for you, and will construct it differently for different backends.
+One other thing to clarify. You will find things on the internet that demonstrate Core by sending fully formed SQL statements to the database, and suggest both that this is Core's primary use case, and that you need to use ORM to avoid writing SQL. This is wrong, or perhaps just poorly stated. Core allows you to work with Python objects to specify what you want to do, and it will build the SQL for you. In fact, as I mentioned above, the entire purpose of using a package like SQLAlchemy is to interact with the database in a database-agnostic way, and Core does that. If you are writing the SQL yourself, you have to spend time making sure that you are constructing the SQL itself in a database-agnostic way. If you use SQLAlchemy (Core *or* ORM), SQLAlchemy will build the SQL for you, and will construct it differently for different backends.
 
 ## Creating the Database Connection
 
@@ -97,6 +97,8 @@ url = f"postgresql://{username}:{password}@{host}:{port}/{database}"
 
 engine = create_engine(url, echo=True)
 ```
+
+Do keep in mind that for a real-world application, you shouldn't store the database password in plaintext in your Python script. You can load it from an environment variable or external file.
 
 ## Basic Query and DML
 
@@ -230,7 +232,7 @@ WHERE customer.name ILIKE ?
 
 By the way, what's up with the question mark in the query? Didn't we compare the customer name with the string `M%`? The query is sent to the database as a parameterized query. That is the query is sent with a placeholder for the search string, and then that search string is substituted into the query. This is a common technique that is used to prevent [SQL injection](https://en.wikipedia.org/wiki/SQL_injection) attacks. SQLAlchemy handles this for you, whereas if you built the query string yourself and sent it to the database, you would have to do your own "sanitizing" of, say, form data on a website that you manage, in order to prevent SQL injection attacks.
 
-The last common query technique we will look at is table joins to return data from more than one table. SQLAlchemy does something helpful here. If your tables have foreign keys define, you will often want to join on the foreign key. SQLAlchemy will do this for you by default. That is, when you join to a table that has a foreign key defined, SQLAlchemy will automatically join on the foreign key column without you having to explicitly specify the join column(s). (It is also possible to join on columns other than the foreing keys by explicitly specifying them, but that will not be demonstrated here.)
+The last common query technique we will look at is table joins to return data from more than one table. SQLAlchemy does something helpful here. If your tables have foreign keys define, you will often want to join on the foreign key. SQLAlchemy will do this for you by default. That is, when you join to a table that has a foreign key defined, SQLAlchemy will automatically join on the foreign key column without you having to explicitly specify the join column(s). (It is also possible to join on columns other than the foreign keys by explicitly specifying them, but that will not be demonstrated here.)
 
 In the sample Transactions database, the `order` table has foreign keys to the `customer` and `address` tables. That is, you can't create an order for a customer or address that doesn't already exist in the database. We will request the customer name, street, and zipcode columns so that we can print address labels.
 
